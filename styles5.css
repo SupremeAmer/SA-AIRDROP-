@@ -36,7 +36,7 @@ main {
 .coin-icon {
     width: 50px;
     height: 50px;
-    margin: 20px;
+    margin: 2px;
 }
 
 #total-coins {
@@ -72,35 +72,18 @@ main {
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.leaderboard table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.leaderboard th, .leaderboard td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.leaderboard th {
-  background-color: #f0f0f0;
-}
-
 footer {
     background-color: #333;
     color: #fff;
-    padding: 2em;
+    padding: 1em;
     text-align: center;
     clear: both;
-    
 }
 
 footer nav ul {
     list-style: none;
-    margin: 1;
-    padding: 2;
+    margin: 0;
+    padding: 0;
 }
 
 footer nav ul li {
@@ -112,3 +95,4 @@ footer nav a {
     color: #fff;
     text-decoration: none;
 }
+
