@@ -14,7 +14,7 @@ body {
 
 .header-message marquee {
     color: #fff;
-    font-size: 23px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -33,8 +33,8 @@ main {
 }
 
 .coin-icon {
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 350px;
     margin: 40px;
 }
 
@@ -76,8 +76,8 @@ footer {
 
 footer nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 1;
+    padding: 2;
 }
 
 footer nav ul li {
