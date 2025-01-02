@@ -33,14 +33,16 @@ main {
 }
 
 .coin-icon {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+    width: 150px;
+    height: 150px;
+    margin: 40px;
 }
 
 #total-coins {
     font-size: 24px;
     font-weight: bold;
+    border-radius: 20px;
+}
 }
 
 .tasks {
@@ -53,18 +55,23 @@ main {
     list-style: none;
     margin: 0;
     padding: 0;
+    border-radius: 20px;
+}
 }
 
 #task-list li {
     margin-bottom: 10px;
+    border-radius: 20px;
+}
 }
 
 footer {
     background-color: #333;
     color: #fff;
-    padding: 1em;
+    padding: 2em;
     text-align: center;
     clear: both;
+    border-radius: 20px;
 }
 
 footer nav ul {
