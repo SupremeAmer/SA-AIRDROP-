@@ -4,19 +4,27 @@ body {
     padding: 0;
 }
 
-.header-message {
+header {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 1em;
     text-align: center;
-    position: relative;
-    top: -40px;
 }
 
-.header-message marquee {
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav a {
     color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    text-decoration: none;
 }
 
 main {
@@ -27,7 +35,7 @@ main {
 }
 
 .user-profile {
-    background-color: ash;
+    background-color: #f7f7f7;
     padding: 1em;
     border: 1px solid #ddd;
     margin-bottom: 20px;
@@ -42,22 +50,6 @@ main {
 #total-coins {
     font-size: 24px;
     font-weight: bold;
-}
-
-.tasks {
-    background-color: ash;
-    padding: 1em;
-    border: 1px solid #ddd;
-}
-
-#task-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#task-list li {
-    margin-bottom: 10px;
 }
 
 footer {
