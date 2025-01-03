@@ -1,4 +1,4 @@
-/ script.js
+// script.js
 
 // Initialize total coins to 0
 let totalCoins = 0;
