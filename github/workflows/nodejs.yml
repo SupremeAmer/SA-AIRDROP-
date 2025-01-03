@@ -1,0 +1,39 @@
+```
+name: Node.js Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Handle authentication flow
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ 8040618454:AAFpwP49XKefk2z2v8ZX6XiaOfKbMs4chdg}}
+        run: |
+          node authenticate.js
+
+      - name: Save user credentials
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+        run: |
+          node save-credentials.js
+```
