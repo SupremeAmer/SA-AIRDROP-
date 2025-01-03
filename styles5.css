@@ -27,7 +27,7 @@ main {
 }
 
 .user-profile {
-    background-color: #f7f7f7;
+    background-color: ash;
     padding: 1em;
     border: 1px solid #ddd;
     margin-bottom: 20px;
@@ -45,7 +45,7 @@ main {
 }
 
 .tasks {
-    background-color: #f7f7f7;
+    background-color: ash;
     padding: 1em;
     border: 1px solid #ddd;
 }
