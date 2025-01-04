@@ -1,4 +1,5 @@
-from flask import Flask, redirect, url_for, request, jsonify
+
+from flask import Flask, request, jsonify
 import telegram
 
 app = Flask(*name*)
@@ -10,7 +11,7 @@ bot = telegram.Bot(token=bot_token)
 def index():
 if request.method == 'POST':
 update = telegram.Update.de_json(request.get_json(), bot)
-chat_id = (7053015856)
+chat_id = (link unavailable)
 bot.sendMessage(chat_id, 'Hello! You participated!')
 return 'OK'
 else:
