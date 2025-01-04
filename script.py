@@ -11,7 +11,7 @@ bot = telegram.Bot(token=bot_token)
 def index():
 if request.method == 'POST':
 update = telegram.Update.de_json(request.get_json(), bot)
-chat_id = (link unavailable)
+chat_id = (7053015856)
 bot.sendMessage(chat_id, 'Hello! You participated!')
 return 'OK'
 else:
