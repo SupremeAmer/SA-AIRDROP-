@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-const TelegramBot = require('telegram-bot-sdk');
-const db = require('./db');
+const TelegramBot = require('node-telegram-bot-api');
 
-const bot = new TelegramBot('8040618454:AAFpwP49XKefk2z2v8ZX6XiaOfKbMs4chdg');
+const bot = new TelegramBot(process.env.8040618454:AAFpwP49XKefk2z2v8ZX6XiaOfKbMs4chdg, { polling: false });
 
-app.get('/login', (req, res) => {
+app.get('/participate', (req, res) => {
   const authUrl = bot.getAuthUrl();
   res.redirect(authUrl);
 });
@@ -13,9 +12,11 @@ app.get('/login', (req, res) => {
 app.get('/callback', (req, res) => {
   const token = req.query.token;
   bot.getUserProfile(token).then((profile) => {
-    const username = profile.username;
-    db.saveUsername(username);
-    res.send(`Welcome, ${username}!`);
+    console.log('User profile:', profile);
+    res.send(`Welcome, ${profile.username}!`);
+  }).catch((error) => {
+    console.error('Error:', error);
+    res.status(500).send('Error occurred');
   });
 });
 
