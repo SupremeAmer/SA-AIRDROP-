@@ -2,43 +2,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>$SA Homepage</title>
-	<link rel="stylesheet" href="styles5.css">
+  <title>$SA Homepage</title>
+  <link rel="stylesheet" href="styles5.css">
 </head>
 <body>
-	<header>
-		<h1>Welcome to $SA 🚀🚀💰💰🚀</h1>
-	</header>
-	<main>
-		<div class="username">Username: [username]</div>
-		<div class="IMG-20241230-WA0018.jpg">
-			<!-- Coin icon flipping animation -->
-		</div>
-		<div class="total-points">Total $SA Points: [points]</div>
-	</main>
-	<footer>
-		<div class="buttons">
-			<button class="home-button">Home</button>
-			<button class="task-button">Task</button>
-			<button class="wallet-button">Wallet</button>
-			<div class="connect-button">
-			
-  <script src="https://c0f4f41c-2f55-4863-921b-sdk-docs.github.io/cdn/metamask-sdk.js"></script>
-  <script>
-    const MMSDK = new MetaMaskSDK.MetaMaskSDK({
-      dappMetadata: {
-        name: "Example Pure JS Dapp",
-      },
-      infuraAPIKey: b8f020550f2644a981fdd71b7051bba0,
-      // Other options.
-    });
-    MMSDK.connect()
-  </script>
-  
-			</div>
-			<button class="boast-button">Boast</button>
-		</div>
-	</footer>
-	<script src="script.js"></script>
+  <header>
+    <h1>Welcome to $SA 🚀🚀💰💰🚀</h1>
+  </header>
+  <main>
+    <div class="username">Username: [username]</div>
+    <div class="coin-icon">
+      <!-- Coin icon flipping animation -->
+    </div>
+    <div class="dashboard">
+      <h2>Dashboard</h2>
+      <p>Coin Earned: <span id="coin-earned">0</span></p>
+    </div>
+  </main>
+  <footer>
+    <div class="buttons">
+      <button class="home-button">Home</button>
+      <button class="task-button">Task</button>
+      <button class="wallet-button"><a href="wallet.html">Wallet</a></button>
+      <div class="connect-button">
+        <script src="https://c0f4f41c-2f55-4863-921b-sdk-docs.github.io/cdn/metamask-sdk.js"></script>
+        <script>
+          const MMSDK = new MetaMaskSDK.MetaMaskSDK({
+            dappMetadata: {
+              name: "Example Pure JS Dapp",
+            },
+            infuraAPIKey: b8f020550f2644a981fdd71b7051bba0,
+            // Other options.
+          });
+          MMSDK.connect()
+        </script>
+      </div>
+      <button class="boast-button">Boast</button>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
+```
