@@ -1,78 +1,90 @@
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
 
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
+header h1 {
+  margin: 0;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-.user-profile {
-    background-color: #f7f7f7;
-    padding: 1em;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
+.username {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .coin-icon {
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: flip 2s infinite;
 }
 
-#total-coins {
-    font-size: 24px;
-    font-weight: bold;
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
+.total-points {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    clear: both;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-footer nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.buttons {
+  display: flex;
+  justify-content: space-around;
 }
 
-footer nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-footer nav a {
-    color: #fff;
-    text-decoration: none;
+button:hover {
+  background-color: #3e8e41;
 }
+
+.connect-button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.connect-button:hover {
+  background-color: #3e8e41;
+}
+      
