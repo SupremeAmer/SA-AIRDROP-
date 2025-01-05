@@ -70,4 +70,16 @@ footer {
     text-align: center;
     clear: both;
 }
+.participate-button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.participate-button:hover {
+  background-color: #3e8e41;
+}
  
