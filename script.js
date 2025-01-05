@@ -1,3 +1,49 @@
+// Get the coin icon element
+const coinIcon = document.querySelector('.coin-icon');
+
+// Animate the coin icon
+coinIcon.addEventListener('animationiteration', () => {
+  coinIcon.style.transform = 'rotateY(0deg)';
+});
+
+// Function to update the username
+function updateUsername(username) {
+  usernameElement.textContent = `Username: ${username}`;
+}
+
+// Function to handle the task button click
+function handleTaskButtonClick() {
+  console.log('Task button clicked!');
+}
+
+// Get the task button element
+const taskButton = document.querySelector('.task-button');
+
+// Add event listener to the task button
+taskButton.addEventListener('click', handleTaskButtonClick);
+
+// Function to handle the boast button click
+function handleBoastButtonClick() {
+  console.log('Boast button clicked!');
+}
+
+// Get the boast button element
+const boastButton = document.querySelector('.boast-button');
+
+// Add event listener to the boast button
+boastButton.addEventListener('click', handleBoastButtonClick);
+
+// Function to handle the home button click
+function handleHomeButtonClick() {
+  console.log('Home button clicked!');
+}
+
+// Get the home button element
+const homeButton = document.querySelector('.home-button');
+
+// Add event listener to the home button
+homeButton.addEventListener('click', handleHomeButtonClick);
+
 let coinInterval;
 let timeRemaining = 5 * 60 * 60 * 1000; // 5 hours
 let coinEarned = 0;
