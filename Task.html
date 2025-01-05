@@ -4,7 +4,6 @@
 <head>
   <title>$SA Homepage</title>
   <link rel="stylesheet" href="styles5.css">
-  <a href="index.html">🔙</a>
 </head>
 <body>
   <header>
@@ -12,14 +11,20 @@
             <marquee behavior="scroll" direction="left">Welcome to $SA💰🚀🚀, this is just the starting 🥳🤑</marquee>
        </div>
       </header>
+    <a href="index.html">🔙</a>
   <main>
     <div class="dashboard">
   <h2>Dashboard</h2>
   <p>Coin Earned: <span id="coin-earned">0</span></p>
-<div class="coin-icon" id="coin-icon">
-  <img src="AddText_01-05-04.29.53.png" alt="$SA" width="200px" height="200px">
-</div>
-    </div>
+<div>
+    <img id="coin-icon" src="coin-icon.png" alt="Coin Icon">
+    <p>Coin Balance: <span id="coin-balance">0</span></p>
+    <p>Energy: <span id="energy">2000</span></p>
+    <button id="buy-energy">Buy Energy</button>
+  </div>
+
+  <script src="script.js"></script>
+    
 <p id="time-remaining"></p>
 
   </main>
@@ -43,7 +48,6 @@
       
     </div>
   </footer>
-  <script src="script.js"></script>
 </body>
 </html>
 
