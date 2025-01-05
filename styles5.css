@@ -39,18 +39,12 @@ main {
 }
 
 .coin-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
-  animation: flip 2s infinite;
+  font-size: 50px;
+  cursor: pointer;
 }
 
-@keyframes flip {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
+.coin-icon i {
+  color: #ffdf00;
 }
 
 .total-points {
@@ -86,16 +80,3 @@ button:hover {
   background-color: #3e8e41;
 }
 
-.connect-button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.connect-button:hover {
-  background-color: #3e8e41;
-}
-      
