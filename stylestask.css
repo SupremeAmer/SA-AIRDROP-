@@ -1,0 +1,47 @@
+body {
+    background-color: #4567b7; /* Celestial Blue */
+    font-family: Arial, sans-serif;
+}
+
+.task-board {
+    width: 80%;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-stickers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.task-sticker {
+    width: 150px;
+    height: 150px;
+    background-color: #f7f7f7;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-sticker h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-task-btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-task-btn:hover {
+    background-color: #3e8e41;
+}
