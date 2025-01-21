@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #orange;
 }
 
 header {
@@ -37,13 +37,20 @@ main {
   margin-bottom: 10px;
 }
 
-.coin-icon {
-  font-size: 60px;
-  cursor: pointer;
+.coin {
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
 }
 
-.coin-icon i {
-  color: #ffdf00;
+.coin svg {
+  transform: rotateX(45deg) rotateY(45deg);
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.coin:hover svg {
+  transform: rotateX(45deg) rotateY(135deg);
 }
 
 .total-points {
