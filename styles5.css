@@ -42,7 +42,6 @@ main {
   height: 100px;
   perspective: 1000px;
 }
-
 .coin svg {
   transform: rotateX(45deg) rotateY(45deg);
   transition: transform 0.5s;
@@ -85,4 +84,14 @@ button {
 button:hover {
   background-color: #3e8e41;
 }
-
+. connect wallet-btn {
+position: absolute;
+top: 0;
+right: 0;
+}
+. energy-btn {
+position: absolute;
+top: 50%;
+left: 0;
+transform: translateY(-50%);
+}
