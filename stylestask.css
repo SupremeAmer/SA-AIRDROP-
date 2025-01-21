@@ -37,3 +37,18 @@ header {
 .task-list li a:hover {
     color: #23527c;
 }
+task-list li {
+background-color: #f7f7f7;
+padding: 10px;
+border-bottom: 1px solid #ddd;
+}
+
+.task-list li:last-child {
+border-bottom: none;
+}
+
+.task-list li:hover {
+background-color: #eee;
+}
+
+
