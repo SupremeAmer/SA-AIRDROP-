@@ -1,63 +1,54 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$SA Homepage</title>
-  <link rel="stylesheet" href="styles5.css">
+    <title>$SA Homepage</title>
+    <link rel="stylesheet" href="styles5.css">
 </head>
 <body>
-  <header>
-       <div class="header-message">
+    <header>
+        <div class="header-message">
             <marquee behavior="scroll" direction="left">Welcome to $SA💰🚀🚀, this is just the starting 🥳🤑</marquee>
-       </div>
-      </header>
+        </div>
+    </header>
     <a href="index.html">🔙</a>
-  <main>
-    
- <div class="home-balance-container">
+    <main>
+        <div class="home-balance-container">
             <h2>Home Balance💰⚖️💰: <span id="home-balance-amount">0</span> 💰</h2>
- </div>
-
-
-<div>
- 
-                 <p>Energy: <span id="energy">2000</span></p>
-    <button id="energy-button">⚡Energy⚡</button>
-  </div>
-   <div class="coin"> 
-      <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="45" border-radius="17" stroke="#000" stroke-width="10" fill="#FFD700"/>
-  <text x="50%" y="50%" text-anchor="middle" font-size="44" font-weight="bold" fill="#666">SA</text>
-      </svg>
-   </div>
-       
-  <script src="script.js"></script>
-    
-<p id="time-remaining"></p>
-<script>
-//To connect to the jS UI 1ibrary -->
-const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-//Define the Manifest URL of your Connect
-manifestUrl:"https://supremeamer.github.io/SA-AIRDROP-/tonconnect-manifest.json,
-  
-bottonrootid: ton-connect 
-</script>
-
-
-
-  </main>
-  <footer>
-    <div class="buttons">
-      <button class="home-button">🏠</button>
-      <button class="task.tml"><a href="task.html">📜</a></button>
-      <button class="wallet-button"><a href="wallet.kt">Wallet</a></button>
-      
-      </div>
-      
-    <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
-  </footer>
+        </div>
+        <div>
+            <p>Energy: <span id="energy">2000</span></p>
+            <button id="energy-button">⚡Energy⚡</button>
+        </div>
+        <div class="coin">
+            <svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" border-radius="17" stroke="#000" stroke-width="10" fill="#FFD700"/>
+                <text x="50%" y="50%" text-anchor="middle" font-size="44" font-weight="bold" fill="#666">SA</text>
+            </svg>
+        </div>
+        <button id="mining-button">Start Mining</button>
+        <div class="energy-discharge-container">
+            <div class="energy-discharge"></div>
+            <p id="time-remaining"></p>
+        </div>
+        <script src="script.js"></script>
+        <p id="mining-status"></p>
+        <script>
+            //To connect to the jS UI 1ibrary --> 
+            const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                //Define the Manifest URL of your Connect manifestUrl:"https://supremeamer.github.io/SA-AIRDROP-/tonconnect-manifest.json, 
+                bottonrootid: ton-connect
+            });
+        </script>
+    </main>
+    <footer>
+        <div class="buttons">
+            <button class="home-button">🏠</button>
+            <button class="task.tml"><a href="task.html">📜</a></button>
+            <button class="wallet-button"><a href="wallet.kt">Wallet</a></button>
+        </div>
+        <script src="https://unpkg.com/@tonconnect/sdk@0.0.34/dist/tonconnect-sdk.min.js"></script>
+    </footer>
 </body>
 </html>
-
