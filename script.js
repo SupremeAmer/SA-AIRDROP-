@@ -2,7 +2,7 @@
 const miningButton = document.getElementById('mining-button');
 
 // Get the home balance amount element
-const homeBalanceAmount = document.getElementById('home-balance-amount');
+const homeBalanceAmount = document.getElementById("#home-balance-amount");
 
 // Get the energy discharge container
 const energyDischargeContainer = document.querySelector('.energy-discharge-container');
