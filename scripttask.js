@@ -1,8 +1,8 @@
 // Task data
 let tasks = [
     { id: 1, title: "follow SupremeAmer channel", link: "https://t.me/SupremeAmer_community", clicks: 0 },
-    { id: 2, title: "Task 2", link: "https://www.example.com/task2", clicks: 0 },
-    { id: 3, title: "Task 3", link: "https://www.example.com/task3", clicks: 0 },
+    { id: 2, title: "Americana", link: "https://www.example.com/task2", clicks: 0 },
+    { id: 3, title: "follow", link: "https://www.example.com/task3", clicks: 0 },
 ];
 
 // User data
