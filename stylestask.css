@@ -3,6 +3,13 @@ body {
     font-family: Arial, sans-serif;
 }
 
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
 .task-board {
     width: 80%;
     margin: 40px auto;
@@ -12,57 +19,21 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.task-stickers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.task-sticker {
-    width: 150px;
-    height: 150px;
-    background-color: #f7f7f7;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.task-sticker h2 {
-    font-weight: bold;
+.task-list li {
     margin-bottom: 10px;
 }
 
-.add-task-btn {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.task-list li a {
+    text-decoration: none;
+    color: #337ab7;
 }
 
-.add-task-btn:hover {
-    background-color: #3e8e41;
+.task-list li a:hover {
+    color: #23527c;
 }
-.home-balance-container {
-  background-color: #f7f7f7;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.home-balance {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-#home-balance-amount {
-  color: #4CAF50;
-}
-
