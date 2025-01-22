@@ -1,67 +1,74 @@
 body {
-   background-image: url('AddText_01-22-02.45.25.jpg');
+background-image: url('AddText_01-22-02.45.25.jpg');
 background-size: cover;
 background-position: center;
 height: 100vh;
+margin: 0;
 }
 
+.header-bar {
+background-color: #4CAF50;
+color: #fff;
+padding: 10px;
+border-radius: 10px 10px 0 0;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
 
 .home-balance-container {
-  background-color: #4CAF50; /* green */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+background-color: #4CAF50;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+margin-top: 20px;
 }
 
 #mining-button {
-  background-color: #4CAF50; /* green */
-  color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+background-color: #4CAF50;
+color: #fff;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #mining-status {
-  color: #66d9ef; /* light blue */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+color: #66d9ef;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #time-remaining {
-  color: #ff9800; /* orange */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+color: #ff9800;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .energy-discharge-container {
-  background-color: #333333; /* dark gray */
-  padding: 10px;
-  border-radius: 10px;
+background-color: #333333;
+padding: 10px;
+border-radius: 10px;
 }
 
 .energy-discharge {
-  background-color: #66d9ef; /* light blue */
-  height: 10px;
-  border-radius: 10px;
+background-color: #66d9ef;
+height: 10px;
+border-radius: 10px;
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #4CAF50; /* green */
-  text-align: center;
-  padding: 10px;
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #4CAF50;
+text-align: center;
+padding: 10px;
 }
 
 footer button {
-  background-color: #66d9ef; /* light blue */
-  color: #fff;
-  border: none;
-  padding: 10px 26px;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 13px;
+background-color: #66d9ef;
+color: #fff;
+border: none;
+padding: 10px 26px;
+font-size: 20px;
+cursor: pointer;
+border-radius: 13px;
 }
