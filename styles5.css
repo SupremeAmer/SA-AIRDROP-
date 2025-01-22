@@ -7,13 +7,28 @@ margin: 0;
 }
 
 header {
-background-color: #4CAF50;
-color: #fff;
-padding: 10px;
-border-radius: 10px 10px 0 0;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
 }
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
 
 .home-balance-container {
 background-color: #4CAF50;
@@ -22,8 +37,9 @@ border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 margin-top: 20px;
 }
-h2 {
+.home-balance-amount {
   background-color: #4CAF50;
+  color: #ff9800;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0.1);
@@ -40,6 +56,8 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 #mining-status {
 color: #66d9ef;
+  background-color: #ff9800;
+  padding: 20px;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   front-size: 20px;
@@ -47,10 +65,10 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 #time-remaining {
 color: #ff9800;
+  padding: 20px;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  front-size: 20px
+  front-size: 30px;
 }
 
 .energy-discharge-container {
