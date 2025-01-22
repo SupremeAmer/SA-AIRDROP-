@@ -7,7 +7,7 @@ margin: 0;
 }
 
 header {
-    background-color: #333;
+    background-color: #orange;
     color: #fff;
     padding: 1em;
     text-align: center;
@@ -25,7 +25,7 @@ header nav ul li {
 }
 
 header nav a {
-    color: #fff;
+    color: #orange;
     text-decoration: none;
 }
 
@@ -37,7 +37,7 @@ border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 margin-top: 20px;
 }
-.home-balance-amount {
+#home-balance-amount {
   background-color: #4CAF50;
   color: #ff9800;
   padding: 20px;
