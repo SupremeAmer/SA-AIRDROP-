@@ -5,7 +5,7 @@ body {
 
 
 .home-balance-container {
-  background-color: #f5f5f5; /* milk color */
+  background-color: #4CAF50; /* green */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -14,14 +14,23 @@ body {
 #mining-button {
   background-color: #4CAF50; /* green */
   color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 }
 
 #mining-status {
   color: #66d9ef; /* light blue */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 }
 
 #time-remaining {
   color: #ff9800; /* orange */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 }
 
 .energy-discharge-container {
@@ -49,7 +58,7 @@ footer button {
   background-color: #66d9ef; /* light blue */
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 14px 20px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 13px;
