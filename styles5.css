@@ -1,6 +1,7 @@
 body {
-  background-color: #4567b7; /* celestial blue */
-  transition: background-color 0.5s;
+  background-image: url('IMG-20250122-WA0006.jpg');
+background-size: cover;
+background-position: center; 
 }
 
 
