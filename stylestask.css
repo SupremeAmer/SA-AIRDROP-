@@ -1,5 +1,7 @@
 body {
-    background-color: #4567b7; /* Celestial Blue */
+    background-image: url('IMG-20241230-WA0018.jpg');
+background-size: cover;
+background-position: center;
     font-family: Arial, sans-serif;
 }
 
