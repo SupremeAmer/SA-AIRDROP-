@@ -1,6 +1,11 @@
 
 body {
     background-image: linear-gradient(to bottom, #4567b7, #6495ed);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-message {
@@ -70,4 +75,9 @@ body {
 
 .buttons button {
     margin: 0 10px;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
 }
