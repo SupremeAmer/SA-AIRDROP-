@@ -22,24 +22,35 @@ border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 margin-top: 20px;
 }
-
+.h {
+  background-color: #4CAF50;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0.1);
+  front-color: #Orange;
+  front-size: 30px;
+}
 #mining-button {
 background-color: #4CAF50;
 color: #fff;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 #mining-status {
 color: #66d9ef;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  front-size: 20px;
 }
 
 #time-remaining {
 color: #ff9800;
 border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  front-size: 20px
 }
 
 .energy-discharge-container {
