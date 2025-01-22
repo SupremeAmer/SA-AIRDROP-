@@ -1,22 +1,5 @@
-const miningButton = document.getElementById('mining-button');
-const homeBalanceAmount = document.getElementById('home-balance-amount');
-const energyDischargeContainer = document.querySelector('.energy-discharge-container');
-const energyDischarge = document.querySelector('.energy-discharge');
-const timeRemaining = document.getElementById('time-remaining');
-const miningStatus = document.getElementById('mining-status');
-
-let homeBalance = 0;
-let mining = false;
-let timeRemainingSeconds = 86400; 
-let intervalId;
-
-miningButton.style.background = '#4CAF50';
-miningButton.style.color = '#fff';
-
 miningButton.addEventListener('click', () => {
-  if (mining) {
-    stopMining();
-  } else {
+  if (!mining) {
     startMining();
   }
 });
@@ -25,21 +8,20 @@ function startMining() {
   mining = true;
   miningStatus.textContent = 'Mining...';
   miningStatus.style.color = 'green';
-  miningButton.textContent = 'Stop Mining';
+  miningButton.textContent = 'Mining in progress...';
   miningButton.style.background = 'red';
+  miningButton.disabled = true;
   intervalId = setInterval(() => {
-    if (mining) {
-      homeBalance += 0.0002;
-      homeBalanceAmount.textContent = homeBalance.toFixed(4);
-      homeBalanceAmount.style.color = 'green';
-      timeRemainingSeconds -= 1;
-      timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-      timeRemaining.style.color = 'blue';
-      energyDischarge.style.width = `${(timeRemainingSeconds / 86400) * 100}%`;
-      energyDischarge.style.background = 'green';
-      if (timeRemainingSeconds <= 0) {
-        stopMining();
-      }
+    homeBalance += 0.0002;
+    homeBalanceAmount.textContent = homeBalance.toFixed(4);
+    homeBalanceAmount.style.color = 'green';
+    timeRemainingSeconds -= 1;
+    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
+    timeRemaining.style.color = 'blue';
+    energyDischarge.style.width = `${(timeRemainingSeconds / 86400) * 100}%`;
+    energyDischarge.style.background = 'green';
+    if (timeRemainingSeconds <= 0) {
+      stopMining();
     }
   }, 1000);
 }
@@ -50,6 +32,7 @@ function stopMining() {
   miningStatus.style.color = 'red';
   miningButton.textContent = 'Start Mining';
   miningButton.style.background = '#4CAF50';
+  miningButton.disabled = false;
   clearInterval(intervalId);
   timeRemainingSeconds = 86400;
   energyDischarge.style.width = '100%';
