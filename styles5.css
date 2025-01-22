@@ -9,6 +9,9 @@ body {
 
 .home-balance-container {
     background-image: linear-gradient(to bottom, #6495ed, #87ceeb);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .energy-discharge-container {
@@ -30,4 +33,41 @@ body {
 
 #time-remaining {
     color: blue;
+}
+
+.home-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.task-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wallet-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.buttons button {
+    margin: 0 10px;
 }
