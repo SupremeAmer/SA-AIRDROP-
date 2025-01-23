@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Board</title>
+    <title>Task List</title>
     <link rel="stylesheet" href="stylestask.css">
 </head>
     <a href="Task.html">🔙</a>
@@ -11,16 +11,66 @@
     <header>
         <h1>COMPLETE TASK TO EARN MORE 💰⚖️💰</h1>
     </header>
-    <div class="task-board">
-        <div class="task-list">
-            <!-- Task list will be generated here -->
-        </div>
-        
+    <style>
+        .task-list {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="task-list"></ul>
+    <script>
+        // Task data
+        let tasks = [
+            { id: 1, title: "follow SupremeAmer channel", link: "https://t.me/SupremeAmer_community", clicks: 0 },
+            { id: 2, title: "Americana", link: "https://www.example.com/task2", clicks: 0 },
+            { id: 3, title: "follow", link: "https://www.example.com/task3", clicks: 0 },
+        ];
 
+        // User data
+        let user = {
+            homeBalance: 0
+        };
 
- <script src="scripttask.js"></script>
-<!-- Task list will be generated here -->
-<ul class="task-list">
-</ul>
+        // Function to generate task list
+        function generateTaskList() {
+            const taskListContainer = document.querySelector(".task-list");
+            taskListContainer.innerHTML = "";
+
+            tasks.forEach((task) => {
+                const taskListItem = document.createElement("li");
+                const openButton = document.createElement("button");
+                const checkButton = document.createElement("button");
+
+                openButton.textContent = "Open";
+                checkButton.textContent = "Check";
+                checkButton.style.display = "none";
+
+                openButton.addEventListener("click", () => {
+                    window.open(task.link, "_blank");
+                    openButton.style.display = "none";
+                    checkButton.style.display = "block";
+                });
+
+                checkButton.addEventListener("click", () => {
+                    alert("You did not complete the task 😞, try again 🤧.");
+                    setTimeout(() => {
+                        checkButton.style.display = "none";
+                        openButton.style.display = "block";
+                    }, 5000);
+                });
+
+                taskListItem.innerHTML = task.title + ": ";
+                taskListItem.appendChild(openButton);
+                taskListItem.appendChild(checkButton);
+                taskListContainer.appendChild(taskListItem);
+            });
+        }
+
+        // Generate task list on page load
+        generateTaskList();
+    </script>
 </body>
 </html>
+
+
