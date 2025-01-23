@@ -1,13 +1,27 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-image: url('images.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 header {
-    background-color: #333;
+    background-color: #orange;
     color: #fff;
     padding: 1em;
     text-align: center;
@@ -43,7 +57,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2em;
+    padding: 40px;
 }
 
 .wallet-section {
@@ -65,11 +79,11 @@ main {
 }
 
 button {
-    background-color: #333;
+    background-color: #blue;
     color: #fff;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
 }
 
