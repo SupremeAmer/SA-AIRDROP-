@@ -18,34 +18,25 @@
     <span id="time-remaining"></span>
   </p>
   <script>
-    const miningButton = document.getElementById('mining-button');
-const homeBalanceAmount = document.getElementById('home-balance-amount');
-const timeRemaining = document.getElementById('time-remaining');
-const miningStatus = document.getElementById('mining-status');
-let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
+   
 let mining = false;
 let timeRemainingSeconds = 86400;
+let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
+let lastMiningTime = localStorage.getItem('lastMiningTime') || Date.now();
 let intervalId;
-
-homeBalanceAmount.textContent = homeBalance.toFixed(4);
-
-miningButton.addEventListener('click', () => {
-  if (!mining) {
-    startMining();
-  }
-});
 
 function startMining() {
   mining = true;
-  miningStatus.textContent = 'Mining...';
-  miningButton.textContent = 'Mining in progress...';
-  miningButton.disabled = true;
+  const now = Date.now();
+  const timeDiff = (now - lastMiningTime) / 1000;
+  homeBalance += timeDiff * 0.0002;
+  localStorage.setItem('homeBalance', homeBalance.toString());
+  lastMiningTime = now;
+  localStorage.setItem('lastMiningTime', lastMiningTime);
   intervalId = setInterval(() => {
     homeBalance += 0.0002;
-    homeBalanceAmount.textContent = homeBalance.toFixed(4);
     localStorage.setItem('homeBalance', homeBalance.toString());
     timeRemainingSeconds -= 1;
-    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
     if (timeRemainingSeconds <= 0) {
       stopMining();
     }
@@ -54,12 +45,25 @@ function startMining() {
 
 function stopMining() {
   mining = false;
-  miningStatus.textContent = 'Mining stopped.';
-  miningButton.textContent = 'Start Mining';
-  miningButton.disabled = false;
   clearInterval(intervalId);
-  timeRemainingSeconds = 86400;
 }
+
+window.addEventListener('load', () => {
+  const homeBalanceAmount = document.getElementById('home-balance-amount');
+  const timeRemaining = document.getElementById('time-remaining');
+  const miningStatus = document.getElementById('mining-status');
+  homeBalanceAmount.textContent = homeBalance.toFixed(4);
+  timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
+  miningStatus.textContent = mining ? 'Mining...' : 'Not mining';
+  if (mining) {
+    startMining();
+  }
+});
+
+window.addEventListener('beforeunload', () => {
+  localStorage.setItem('mining', mining);
+  localStorage.setItem('timeRemainingSeconds', timeRemainingSeconds);
+});
 
 function formatTimeRemaining(seconds) {
   const hours = Math.floor(seconds / 3600);
