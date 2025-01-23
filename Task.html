@@ -1,84 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>$SA Homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$SA Homepage</title>
+  <link rel="stylesheet" href="styles5.css">
 </head>
-        <div class="header-message">
-            <marquee behavior="scroll" direction="left">Welcome to $SA💰🚀🚀, this is just the starting 🥳🤑</marquee>
-        </div>
-    </header>
-    <a href="index.html">🔙</a>
 <body>
-    <h2>💲SA POINTS: <span id="home-balance-amount">0</span> </h2>
-    <button id="mining-button">Start Mining</button>
-    <p id="time-remaining"></p>
-    <p id="mining-status"></p>
-    
-<link rel="stylesheet"
-    href="styles5.css">
-    <script>
-        const miningButton = document.getElementById('mining-button');
-        const homeBalanceAmount = document.getElementById('home-balance-amount');
-        const timeRemaining = document.getElementById('time-remaining');
-        const miningStatus = document.getElementById('mining-status');
+  <div class="header-message">
+    <marquee behavior="scroll" direction="left">Welcome to $SA💰🚀🚀, this is just the starting 🥳🤑</marquee>
+  </div>
+  <a href="index.html">🔙</a>
+  <h2>💲SA POINTS: <span id="home-balance-amount">0</span> </h2>
+  <button id="mining-button">Start Mining</button>
+  <p id="mining-info">
+    <span id="mining-status"></span> |
+    <span id="time-remaining"></span>
+  </p>
+  <script>
+    const miningButton = document.getElementById('mining-button');
+const homeBalanceAmount = document.getElementById('home-balance-amount');
+const timeRemaining = document.getElementById('time-remaining');
+const miningStatus = document.getElementById('mining-status');
+let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
+let mining = false;
+let timeRemainingSeconds = 86400;
+let intervalId;
 
-        let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
-        let mining = false;
-        let timeRemainingSeconds = 86400;
-        let intervalId;
+homeBalanceAmount.textContent = homeBalance.toFixed(4);
 
-        homeBalanceAmount.textContent = homeBalance.toFixed(4);
+miningButton.addEventListener('click', () => {
+  if (!mining) {
+    startMining();
+  }
+});
 
-        miningButton.addEventListener('click', () => {
-          if (mining) {
-            stopMining();
-          } else {
-            startMining();
-          }
-        });
+function startMining() {
+  mining = true;
+  miningStatus.textContent = 'Mining...';
+  miningButton.textContent = 'Mining in progress...';
+  miningButton.disabled = true;
+  intervalId = setInterval(() => {
+    homeBalance += 0.0002;
+    homeBalanceAmount.textContent = homeBalance.toFixed(4);
+    localStorage.setItem('homeBalance', homeBalance.toString());
+    timeRemainingSeconds -= 1;
+    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
+    if (timeRemainingSeconds <= 0) {
+      stopMining();
+    }
+  }, 1000);
+}
 
-        function startMining() {
-          mining = true;
-          miningStatus.textContent = 'Mining...';
-          miningButton.textContent = 'Stop Mining';
-          intervalId = setInterval(() => {
-            if (mining) {
-              homeBalance += 0.0002;
-              homeBalanceAmount.textContent = homeBalance.toFixed(4);
-              localStorage.setItem('homeBalance', homeBalance.toString());
-              timeRemainingSeconds -= 1;
-              timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-              if (timeRemainingSeconds <= 0) {
-                stopMining();
-              }
-            }
-          }, 1000);
-        }
+function stopMining() {
+  mining = false;
+  miningStatus.textContent = 'Mining stopped.';
+  miningButton.textContent = 'Start Mining';
+  miningButton.disabled = false;
+  clearInterval(intervalId);
+  timeRemainingSeconds = 86400;
+}
 
-        function stopMining() {
-          mining = false;
-          miningStatus.textContent = 'Mining stopped.';
-          miningButton.textContent = 'Start Mining';
-          clearInterval(intervalId);
-          timeRemainingSeconds = 86400;
-        }
+function formatTimeRemaining(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secondsRemaining = seconds % 60;
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
+}
 
-        function formatTimeRemaining(seconds) {
-          const hours = Math.floor(seconds / 3600);
-          const minutes = Math.floor((seconds % 3600) / 60);
-          const secondsRemaining = seconds % 60;
-          return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
-        }
-    </script>
-    <footer>
-        <div class="buttons">
-            <button class="home-button">🏠</button>
-            <button class="task.tml"><a href="task.html">📜</a></button>
-            <button class="wallet-button"><a href="wallet.kt">Wallet</a></button>
-        </div>
-    </footer>
+ </script>
+  <footer>
+    <div class="buttons">
+      <button class="home-button">🏠</button>
+      <button class="task-button"><a href="task.html">📜</a></button>
+      <button class="wallet-button"><a href="wallet.html">Wallet</a></button>
+    </div>
+  </footer>
 </body>
 </html>
+
