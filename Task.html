@@ -19,14 +19,30 @@
   </p>
   <script>
    
-let mining = false;
-let timeRemainingSeconds = 86400;
+let mining = localStorage.getItem('mining') === 'true';
+let timeRemainingSeconds = parseInt(localStorage.getItem('timeRemainingSeconds')) || 86400;
 let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
 let lastMiningTime = localStorage.getItem('lastMiningTime') || Date.now();
 let intervalId;
 
+const homeBalanceAmount = document.getElementById('home-balance-amount');
+const timeRemaining = document.getElementById('time-remaining');
+const miningStatus = document.getElementById('mining-status');
+const miningButton = document.getElementById('mining-button');
+
+homeBalanceAmount.textContent = homeBalance.toFixed(4);
+timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
+miningStatus.textContent = mining ? 'Mining...' : 'Not mining';
+
+miningButton.addEventListener('click', () => {
+  if (!mining) {
+    startMining();
+  }
+});
+
 function startMining() {
   mining = true;
+  localStorage.setItem('mining', true);
   const now = Date.now();
   const timeDiff = (now - lastMiningTime) / 1000;
   homeBalance += timeDiff * 0.0002;
@@ -37,6 +53,9 @@ function startMining() {
     homeBalance += 0.0002;
     localStorage.setItem('homeBalance', homeBalance.toString());
     timeRemainingSeconds -= 1;
+    localStorage.setItem('timeRemainingSeconds', timeRemainingSeconds);
+    homeBalanceAmount.textContent = homeBalance.toFixed(4);
+    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
     if (timeRemainingSeconds <= 0) {
       stopMining();
     }
@@ -45,20 +64,9 @@ function startMining() {
 
 function stopMining() {
   mining = false;
+  localStorage.setItem('mining', false);
   clearInterval(intervalId);
 }
-
-window.addEventListener('load', () => {
-  const homeBalanceAmount = document.getElementById('home-balance-amount');
-  const timeRemaining = document.getElementById('time-remaining');
-  const miningStatus = document.getElementById('mining-status');
-  homeBalanceAmount.textContent = homeBalance.toFixed(4);
-  timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-  miningStatus.textContent = mining ? 'Mining...' : 'Not mining';
-  if (mining) {
-    startMining();
-  }
-});
 
 window.addEventListener('beforeunload', () => {
   localStorage.setItem('mining', mining);
@@ -72,7 +80,11 @@ function formatTimeRemaining(seconds) {
   return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
 }
 
- </script>
+if (mining) {
+  startMining();
+}
+
+</script>
   <footer>
     <div class="buttons">
       <button class="home-button">🏠</button>
