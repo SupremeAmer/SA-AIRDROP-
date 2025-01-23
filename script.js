@@ -1,3 +1,4 @@
+
 miningButton.addEventListener('click', () => {
   if (!mining) {
     startMining();
@@ -8,9 +9,8 @@ function startMining() {
   mining = true;
   miningStatus.textContent = 'Mining...';
   miningStatus.style.color = 'green';
-  miningButton.textContent = 'Mining in progress...';
+  miningButton.textContent = 'Restart Mining';
   miningButton.style.background = 'red';
-  miningButton.disabled = true;
   intervalId = setInterval(() => {
     homeBalance += 0.0002;
     homeBalanceAmount.textContent = homeBalance.toFixed(4);
@@ -21,21 +21,11 @@ function startMining() {
     energyDischarge.style.width = `${(timeRemainingSeconds / 86400) * 100}%`;
     energyDischarge.style.background = 'green';
     if (timeRemainingSeconds <= 0) {
-      stopMining();
+      clearInterval(intervalId);
+      timeRemainingSeconds = 86400;
+      energyDischarge.style.width = '100%';
     }
   }, 1000);
-}
-
-function stopMining() {
-  mining = false;
-  miningStatus.textContent = 'Mining stopped.';
-  miningStatus.style.color = 'red';
-  miningButton.textContent = 'Start Mining';
-  miningButton.style.background = '#4CAF50';
-  miningButton.disabled = false;
-  clearInterval(intervalId);
-  timeRemainingSeconds = 86400;
-  energyDischarge.style.width = '100%';
 }
 
 function formatTimeRemaining(seconds) {
