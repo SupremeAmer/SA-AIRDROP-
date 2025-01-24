@@ -1,34 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet</title>
-    <link rel="stylesheet" href="styleswallet.css">
+    <link rel="stylesheet" href="styleswalllet.css">
 </head>
 <body>
     <div class="wallet-container">
         <div class="top-bar">
             <button id="connect-btn">Connect</button>
-            <button id="home-btn">🏠</button>
-        </div>
-        <div class="currency-selector">
-            <select id="currency-select">
-                <option value="NGN">Nigerian Naira</option>
-                <option value="USD">US Dollar</option>
-                <option value="EUR">Euro</option>
-                <!-- Add more currency options -->
-            </select>
+            <button id="home-btn">Home</button>
         </div>
         <div class="balance-display">
             <p id="balance-paragraph"></p>
         </div>
-        <div class="coin-display">
-            <ul id="coin-list"></ul>
+        <div class="mined-coin-display">
+            <p id="mined-coin-paragraph"></p>
         </div>
         <div class="error-message" id="error-message"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="scriptwallet.js"></script>
 </body>
 </html>
