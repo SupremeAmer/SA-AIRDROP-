@@ -12,18 +12,28 @@
     justify-content: space-between;
     width: 100%;
     border-radius: 13px;
+    color: #orange;
+    background-color: #green;
+    font-size: 30px;
 }
 
 .balance-display {
     margin-top: 20px;
     padding: 20px;
     border-radius: 13px;
+    color: #orange;
+    background-color: #green;
+    font-size: 30px;
 }
 
 .mined-coin-display {
     margin-top: 20px;
     padding: 20px;
     border-radius: 13px;
+    color: #orange;
+    background-color: #green;
+    font-size: 30px;
+    
 }
 
 .error-message {
@@ -31,5 +41,7 @@
     font-size: 14px;
     margin-top: 10px;
     border-radius: 13px;
+    color: #orange;
+    background-color: #green;
 }
 
