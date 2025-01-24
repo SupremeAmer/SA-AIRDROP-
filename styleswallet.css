@@ -1,12 +1,10 @@
 .wallet-container {
-    background-image: url('images (2).jpeg'); 
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border-radius: 13px
-    
+  background-color: #8BC34A;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .top-bar {
