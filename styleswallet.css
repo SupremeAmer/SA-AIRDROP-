@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    border-radius: 13px
 }
 
 .top-bar {
@@ -12,8 +13,8 @@
     justify-content: space-between;
     width: 100%;
     border-radius: 13px;
-    color: #orange;
-    background-color: #green;
+    color: #FFA07A;
+    background-color: #8BC34A;
     font-size: 30px;
 }
 
@@ -21,8 +22,8 @@
     margin-top: 20px;
     padding: 20px;
     border-radius: 13px;
-    color: #orange;
-    background-color: #green;
+    color: #FFA07A;
+    background-color: #8BC34A;
     font-size: 30px;
 }
 
@@ -30,8 +31,8 @@
     margin-top: 20px;
     padding: 20px;
     border-radius: 13px;
-    color: #orange;
-    background-color: #green;
+    color: #FFA07A;
+    background-color: #8BC34A;
     font-size: 30px;
     
 }
@@ -41,7 +42,7 @@
     font-size: 14px;
     margin-top: 10px;
     border-radius: 13px;
-    color: #orange;
-    background-color: #green;
+    color: #FFA07A;
+    background-color: #8BC34A;
 }
 
