@@ -1,6 +1,5 @@
 .wallet-container {
-    background-image: url('background-image.jpg'); /* Replace with your background image */
-    background-size: cover;
+    background-image: url('images (2).jpeg'); 
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,11 +18,11 @@
 }
 
 .balance-display {
-    margin-top: 20px;
+    margin-top: 35pxpx;
 }
 
 .coin-display {
-    margin-top: 20px;
+    margin-top: 38px;
 }
 
 #coin-list {
