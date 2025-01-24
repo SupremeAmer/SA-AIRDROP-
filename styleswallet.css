@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px;
 }
 
 .top-bar {
@@ -42,7 +42,7 @@
 #connect-btn {
   background-color: #FFA07A;
   color: #FFFFFF;
-  padding: 10px 20px;
+  padding: 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
