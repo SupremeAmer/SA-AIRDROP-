@@ -11,35 +11,25 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-}
-
-.currency-selector {
-    margin-top: 20px;
+    border-radius: 13px;
 }
 
 .balance-display {
-    margin-top: 35pxpx;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 13px;
 }
 
-.coin-display {
-    margin-top: 38px;
-}
-
-#coin-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#coin-list li {
-    margin-bottom: 10px;
+.mined-coin-display {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 13px;
 }
 
 .error-message {
     color: red;
     font-size: 14px;
     margin-top: 10px;
+    border-radius: 13px;
 }
-
-
 
