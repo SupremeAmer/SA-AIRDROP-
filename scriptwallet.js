@@ -1,12 +1,22 @@
 window.onload = function() {
 updateWalletBalance();
 setInterval(updateWalletBalance, 1000);
+startAutoBalance();
 };
 
 function updateWalletBalance() {
 const homeBalance = document.getElementById('home-balance-amount').textContent;
 const walletBalance = document.getElementById('wallet-mining-balance');
 walletBalance.textContent = `$SA: ${homeBalance}`;
+}
+
+function startAutoBalance() {
+let balance = 0;
+const interval = 1000; // 1 second
+setInterval(function() {
+balance += 1; // Add 1 to the balance every second
+document.getElementById('home-balance-amount').textContent = balance.toString();
+}, interval);
 }
 
 document.getElementById('withdrawal-btn').addEventListener('click', function() {
@@ -17,24 +27,20 @@ alert('Withdrawal button clicked!');
 document.getElementById('home-btn').addEventListener('click', function() {
 // TO DO: Implement home button logic here
 alert('Home button clicked!');
-// You can also redirect to home page using:
-// window.location.href = 'Task.html';
 });
 
 document.getElementById('connect-btn').addEventListener('click', function() {
 // TO DO: Implement connect button logic here
 alert('Connect button clicked!');
-// You can also implement connection logic here
 });
 
-document.getElementById('home-btn').addEventListener('click', function() {
-// Redirect to home page
-window.location.href = 'Task.html';
+
+document.getElementById('add-balance-btn').addEventListener('click', function() {
+// No need to add balance manually, it's done automatically
 });
 
-document.getElementById('connect-btn').addEventListener('click', function() {
-// Implement connection logic here
-// For example, you can show a modal or a popup to connect to a wallet
-alert('Connect to a wallet to continue...');
-// You can also use a library like Web3.js to connect to a wallet
-});
+function updateBalanceDisplay() {
+const balance = document.getElementById('home-balance-amount').textContent;
+document.getElementById('wallet-mining-balance').textContent = `$SA: ${balance}`;
+}
+
