@@ -1,14 +1,6 @@
 window.onload = function() {
-updateWalletBalance();
-setInterval(updateWalletBalance, 1000);
 startAutoBalance();
 };
-
-function updateWalletBalance() {
-const homeBalance = document.getElementById('home-balance-amount').textContent;
-const walletBalance = document.getElementById('wallet-mining-balance');
-walletBalance.textContent = `$SA: ${homeBalance}`;
-}
 
 function startAutoBalance() {
 let balance = 0;
@@ -34,13 +26,34 @@ document.getElementById('connect-btn').addEventListener('click', function() {
 alert('Connect button clicked!');
 });
 
-
-document.getElementById('add-balance-btn').addEventListener('click', function() {
-// No need to add balance manually, it's done automatically
-});
-
-function updateBalanceDisplay() {
-const balance = document.getElementById('home-balance-amount').textContent;
-document.getElementById('wallet-mining-balance').textContent = `$SA: ${balance}`;
+document.getElementById('home-balance-amount').textContent = balance.toString();
+}, interval);
 }
 
+document.getElementById('withdrawal-btn').addEventListener('click', function() {
+// TO DO: Implement withdrawal logic here
+alert('Withdrawal button clicked!');
+});
+
+document.getElementById('home-btn').addEventListener('click', function() {
+// TO DO: Implement home button logic here
+alert('Home button clicked!');
+});
+
+document.getElementById('connect-btn').addEventListener('click', function() {
+// TO DO: Implement connect button logic here
+alert('Connect button clicked!');
+});
+
+document.getElementById('home-btn').addEventListener('click', function() {
+// TO DO: Implement home button logic here
+alert('Home button clicked!');
+// You can also redirect to home page using:
+// window.location.href = 'Task.html';
+});
+
+document.getElementById('connect-btn').addEventListener('click', function() {
+// TO DO: Implement connect button logic here
+alert('Connect button clicked!');
+// You can also implement connection logic here
+});
