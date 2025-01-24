@@ -1,67 +1,40 @@
-// Get elements
-const connectBtn = document.getElementById('connect-btn');
-const homeBtn = document.getElementById('home-btn');
-const balanceParagraph = document.getElementById('balance-paragraph');
-const minedCoinParagraph = document.getElementById('mined-coin-paragraph');
-const errorMessage = document.getElementById('error-message');
+window.onload = function() {
+updateWalletBalance();
+setInterval(updateWalletBalance, 1000);
+};
 
-// Add event listeners
-connectBtn.addEventListener('click', connectWallet);
-homeBtn.addEventListener('click', goHome);
-
-// Initialize wallet connection
-let walletConnected = false;
-
-// Initialize balance and mined coin amounts
-let balanceAmount = 0;
-let minedCoinAmount = 0;
-
-// Connect wallet function
-function connectWallet() {
-    try {
-        // TO DO: Implement wallet connection logic
-        walletConnected = true;
-        updateBalance();
-        updateMinedCoin();
-    } catch (error) {
-        handleError(error);
-    }
+function updateWalletBalance() {
+const homeBalance = document.getElementById('home-balance-amount').textContent;
+const walletBalance = document.getElementById('wallet-mining-balance');
+walletBalance.textContent = `$SA: ${homeBalance}`;
 }
 
-// Go home function
-function goHome() {
-    try {
-        // Redirect to home page
-        window.location.href = 'Task.html';
-    } catch (error) {
-        handleError(error);
-    }
-}
+document.getElementById('withdrawal-btn').addEventListener('click', function() {
+// TO DO: Implement withdrawal logic here
+alert('Withdrawal button clicked!');
+});
 
-// Update balance function
-function updateBalance() {
-    try {
-        // TO DO: Implement balance update logic
-        balanceAmount = 100; // Replace with actual balance amount
-        balanceParagraph.textContent = `Balance: ${balanceAmount}`;
-    } catch (error) {
-        handleError(error);
-    }
-}
+document.getElementById('home-btn').addEventListener('click', function() {
+// TO DO: Implement home button logic here
+alert('Home button clicked!');
+// You can also redirect to home page using:
+// window.location.href = 'Task.html';
+});
 
-// Update mined coin function
-function updateMinedCoin() {
-    try {
-        // TO DO: Implement mined coin update logic
-        minedCoinAmount = balanceAmount; // Assume mined coin amount is equal to balance amount
-        minedCoinParagraph.textContent = `$SA = ${minedCoinAmount}`;
-    } catch (error) {
-        handleError(error);
-    }
-}
+document.getElementById('connect-btn').addEventListener('click', function() {
+// TO DO: Implement connect button logic here
+alert('Connect button clicked!');
+// You can also implement connection logic here
+});
 
-// Handle error function
-function handleError(error) {
-    console.error(error);
-    errorMessage.textContent = 'An error occurred. Please try again.';
-}
+document.getElementById('home-btn').addEventListener('click', function() {
+// Redirect to home page
+window.location.href = 'Task.html';
+});
+
+document.getElementById('connect-btn').addEventListener('click', function() {
+// Implement connection logic here
+// For example, you can show a modal or a popup to connect to a wallet
+alert('Connect to a wallet to continue...');
+// You can also use a library like Web3.js to connect to a wallet
+});
