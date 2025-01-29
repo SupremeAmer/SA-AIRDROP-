@@ -1,36 +1,48 @@
+// scripts.js
 
-miningButton.addEventListener('click', () => {
-  if (!mining) {
-    startMining();
-  }
-});
+let mining = false;
+let coins = 0;
+let totalSeconds = 12 * 60 * 60;
+let lastUpdate = Date.now();
 
 function startMining() {
-  mining = true;
-  miningStatus.textContent = 'Mining...';
-  miningStatus.style.color = 'green';
-  miningButton.textContent = 'Restart Mining';
-  miningButton.style.background = 'red';
-  intervalId = setInterval(() => {
-    homeBalance += 0.0002;
-    homeBalanceAmount.textContent = homeBalance.toFixed(4);
-    homeBalanceAmount.style.color = 'green';
-    timeRemainingSeconds -= 1;
-    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-    timeRemaining.style.color = 'blue';
-    energyDischarge.style.width = `${(timeRemainingSeconds / 86400) * 100}%`;
-    energyDischarge.style.background = 'green';
-    if (timeRemainingSeconds <= 0) {
-      clearInterval(intervalId);
-      timeRemainingSeconds = 86400;
-      energyDischarge.style.width = '100%';
+    if (!mining) {
+        mining = true;
+        lastUpdate = Date.now();
+        setInterval(updateMining, 1000);
     }
-  }, 1000);
 }
 
-function formatTimeRemaining(seconds) {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secondsRemaining = seconds % 60;
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
+function updateMining() {
+    if (mining) {
+        const now = Date.now();
+        const elapsedTime = Math.floor((now - lastUpdate) / 1000);
+        lastUpdate = now;
+
+        totalSeconds -= elapsedTime;
+        coins += (elapsedTime * 0.0002);
+
+        if (totalSeconds <= 0) {
+            mining = false;
+            totalSeconds = 0;
+        }
+
+        updateDisplay();
+    }
+}
+
+function updateDisplay() {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById('time-remaining').textContent = 
+        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('coin-balance').textContent = coins.toFixed(4);
+}
+
+document.getElementById('start-mining').addEventListener('click', startMining);
+
+function navigate(section) {
+    window.location.href = `#${section}`;
 }
