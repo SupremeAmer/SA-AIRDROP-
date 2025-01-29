@@ -1,97 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$SA Homepage</title>
-  <link rel="stylesheet" href="styles5.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupremeAmer Coin Airdrop</title>
+    <link rel="stylesheet" href="styles5.css">
 </head>
 <body>
-  <div class="header-message">
-    <marquee behavior="scroll" direction="left">Welcome to $SA💰🚀🚀, this is just the starting 🥳🤑</marquee>
-  </div>
-  <a href="index.html">🔙</a>
-  <h2>💲SA POINTS: <span id="home-balance-amount">0</span> </h2>
-  <button id="mining-button">Start Mining</button>
-  <p id="mining-info">
-    <span id="mining-status"></span> |
-    <span id="time-remaining"></span>
-  </p>
-  <script>
-   
-let mining = localStorage.getItem('mining') === 'true';
-let timeRemainingSeconds = parseInt(localStorage.getItem('timeRemainingSeconds')) || 86400;
-let homeBalance = parseFloat(localStorage.getItem('homeBalance')) || 0;
-let lastMiningTime = localStorage.getItem('lastMiningTime') || Date.now();
-let intervalId;
-
-const homeBalanceAmount = document.getElementById('home-balance-amount');
-const timeRemaining = document.getElementById('time-remaining');
-const miningStatus = document.getElementById('mining-status');
-const miningButton = document.getElementById('mining-button');
-
-homeBalanceAmount.textContent = homeBalance.toFixed(4);
-timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-miningStatus.textContent = mining ? 'Mining...' : 'Not mining';
-
-miningButton.addEventListener('click', () => {
-  if (!mining) {
-    startMining();
-  }
-});
-
-function startMining() {
-  mining = true;
-  localStorage.setItem('mining', true);
-  const now = Date.now();
-  const timeDiff = (now - lastMiningTime) / 1000;
-  homeBalance += timeDiff * 0.0002;
-  localStorage.setItem('homeBalance', homeBalance.toString());
-  lastMiningTime = now;
-  localStorage.setItem('lastMiningTime', lastMiningTime);
-  intervalId = setInterval(() => {
-    homeBalance += 0.0002;
-    localStorage.setItem('homeBalance', homeBalance.toString());
-    timeRemainingSeconds -= 1;
-    localStorage.setItem('timeRemainingSeconds', timeRemainingSeconds);
-    homeBalanceAmount.textContent = homeBalance.toFixed(4);
-    timeRemaining.textContent = formatTimeRemaining(timeRemainingSeconds);
-    if (timeRemainingSeconds <= 0) {
-      stopMining();
-    }
-  }, 1000);
-}
-
-function stopMining() {
-  mining = false;
-  localStorage.setItem('mining', false);
-  clearInterval(intervalId);
-}
-
-window.addEventListener('beforeunload', () => {
-  localStorage.setItem('mining', mining);
-  localStorage.setItem('timeRemainingSeconds', timeRemainingSeconds);
-});
-
-function formatTimeRemaining(seconds) {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secondsRemaining = seconds % 60;
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondsRemaining.toString().padStart(2, '0')}`;
-}
-
-if (mining) {
-  startMining();
-}
-
-</script>
-  <footer>
-    <div class="buttons">
-      <button class="home-button">🏠</button>
-      <button class="task-button"><a href="task.html">📜</a></button>
-      <button class="wallet-button"><a href="wallet.html">💸</a></button>
+    <div class="mining-container">
+        <h1>SupremeAmer Coin Airdrop</h1>
+        <div class="timer">
+            Time remaining: <span id="time-remaining">12:00:00</span>
+        </div>
+        <div class="coin-balance">
+            Coins mined: <span id="coin-balance">0.0000</span>
+        </div>
+        <button id="start-mining">Start Mining</button>
     </div>
-  </footer>
+    <footer>
+        <button onclick="navigate('home')">Home</button>
+        <button onclick="navigate('task')">Task</button>
+        <button onclick="navigate('friends')">Friends</button>
+        <button onclick="navigate('wallet')">Wallet</button>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
-
