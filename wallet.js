@@ -1,5 +1,3 @@
-// wallet.js
-
 const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
 
 document.getElementById('wallet-form').addEventListener('submit', async (event) => {
@@ -41,16 +39,24 @@ function updateTransactionHistory(transactions) {
     });
 }
 
-function withdrawBalance() {
+async function withdrawBalance() {
     const currentBalance = parseFloat(document.getElementById('mined-balance').textContent);
     if (currentBalance > 0) {
-        // Logic to withdraw the balance
-        console.log(`Withdrawing ${currentBalance} coins`);
-        // Update balance and transaction history
-        updateTransactionHistory([
-            { previousBalance: currentBalance.toFixed(4), currentBalance: "0.0000" }
-        ]);
-        document.getElementById('mined-balance').textContent = "0.0000";
+        const address = document.getElementById('wallet-address').value;
+        try {
+            const transaction = await web3.eth.sendTransaction({
+                from: address,
+                to: 'YOUR_DESTINATION_WALLET_ADDRESS',
+                value: web3.utils.toWei(currentBalance.toString(), 'ether')
+            });
+            console.log('Transaction successful:', transaction);
+            updateTransactionHistory([
+                { previousBalance: currentBalance.toFixed(4), currentBalance: "0.0000" }
+            ]);
+            document.getElementById('mined-balance').textContent = "0.0000";
+        } catch (error) {
+            console.error("Error during withdrawal:", error);
+        }
     } else {
         console.error("No balance to withdraw");
     }
