@@ -2,12 +2,13 @@ let mining = false;
 let coins = parseFloat(localStorage.getItem('coins')) || 0;
 let totalSeconds = parseInt(localStorage.getItem('totalSeconds')) || 12 * 60 * 60;
 let lastUpdate = Date.now();
+let miningInterval;
 
 function startMining() {
     if (!mining) {
         mining = true;
         lastUpdate = Date.now();
-        setInterval(updateMining, 1000);
+        miningInterval = setInterval(updateMining, 1000);
     }
 }
 
@@ -23,6 +24,7 @@ function updateMining() {
         if (totalSeconds <= 0) {
             mining = false;
             totalSeconds = 0;
+            clearInterval(miningInterval);
         }
 
         updateDisplay();
@@ -53,4 +55,7 @@ function navigate(section) {
 
 window.addEventListener('load', () => {
     updateDisplay();
+    if (mining) {
+        startMining();
+    }
 });
