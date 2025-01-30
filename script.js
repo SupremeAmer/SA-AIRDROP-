@@ -1,4 +1,4 @@
-let mining = false;
+let mining = JSON.parse(localStorage.getItem('mining')) || false;
 let coins = parseFloat(localStorage.getItem('coins')) || 0;
 let totalSeconds = parseInt(localStorage.getItem('totalSeconds')) || 12 * 60 * 60;
 let lastUpdate = Date.now();
@@ -9,6 +9,7 @@ function startMining() {
         mining = true;
         lastUpdate = Date.now();
         miningInterval = setInterval(updateMining, 1000);
+        localStorage.setItem('mining', JSON.stringify(mining));
     }
 }
 
