@@ -1,8 +1,6 @@
-// scripts.js
-
 let mining = false;
-let coins = 0;
-let totalSeconds = 12 * 60 * 60;
+let coins = parseFloat(localStorage.getItem('coins')) || 0;
+let totalSeconds = parseInt(localStorage.getItem('totalSeconds')) || 12 * 60 * 60;
 let lastUpdate = Date.now();
 
 function startMining() {
@@ -28,6 +26,7 @@ function updateMining() {
         }
 
         updateDisplay();
+        saveState();
     }
 }
 
@@ -41,8 +40,17 @@ function updateDisplay() {
     document.getElementById('coin-balance').textContent = coins.toFixed(4);
 }
 
+function saveState() {
+    localStorage.setItem('coins', coins.toFixed(4));
+    localStorage.setItem('totalSeconds', totalSeconds);
+}
+
 document.getElementById('start-mining').addEventListener('click', startMining);
 
 function navigate(section) {
     window.location.href = `#${section}`;
 }
+
+window.addEventListener('load', () => {
+    updateDisplay();
+});
