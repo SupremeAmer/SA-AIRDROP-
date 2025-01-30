@@ -1,7 +1,7 @@
 let mining = JSON.parse(localStorage.getItem('mining')) || false;
 let coins = parseFloat(localStorage.getItem('coins')) || 0;
 let totalSeconds = parseInt(localStorage.getItem('totalSeconds')) || 12 * 60 * 60;
-let lastUpdate = Date.now();
+let lastUpdate = parseInt(localStorage.getItem('lastUpdate')) || Date.now();
 let miningInterval;
 
 function startMining() {
@@ -10,6 +10,7 @@ function startMining() {
         lastUpdate = Date.now();
         miningInterval = setInterval(updateMining, 1000);
         localStorage.setItem('mining', JSON.stringify(mining));
+        localStorage.setItem('lastUpdate', lastUpdate);
     }
 }
 
@@ -46,6 +47,7 @@ function updateDisplay() {
 function saveState() {
     localStorage.setItem('coins', coins.toFixed(4));
     localStorage.setItem('totalSeconds', totalSeconds);
+    localStorage.setItem('lastUpdate', lastUpdate);
 }
 
 document.getElementById('start-mining').addEventListener('click', startMining);
@@ -55,8 +57,13 @@ function navigate(section) {
 }
 
 window.addEventListener('load', () => {
-    updateDisplay();
     if (mining) {
+        const now = Date.now();
+        const elapsedTime = Math.floor((now - lastUpdate) / 1000);
+        totalSeconds -= elapsedTime;
+        coins += (elapsedTime * 0.0002);
+        lastUpdate = now;
         startMining();
     }
+    updateDisplay();
 });
