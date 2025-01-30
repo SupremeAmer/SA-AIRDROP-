@@ -1,12 +1,21 @@
 const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+let userWalletAddress = localStorage.getItem('userWalletAddress') || generateWallet();
 
 document.getElementById('wallet-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     const address = document.getElementById('wallet-address').value;
+    localStorage.setItem('userWalletAddress', address);
     updateWalletData(address);
 });
 
 document.getElementById('withdraw-button').addEventListener('click', withdrawBalance);
+
+function generateWallet() {
+    const account = web3.eth.accounts.create();
+    localStorage.setItem('userWalletAddress', account.address);
+    localStorage.setItem('userPrivateKey', account.privateKey);
+    return account.address;
+}
 
 async function updateWalletData(address) {
     try {
@@ -22,7 +31,6 @@ async function updateWalletData(address) {
 }
 
 async function fetchTransactions(address) {
-    // Dummy transaction data; replace with actual transaction fetching logic
     return [
         { previousBalance: "0.0000", currentBalance: "0.0500" },
         { previousBalance: "0.0500", currentBalance: "0.1000" }
@@ -31,7 +39,7 @@ async function fetchTransactions(address) {
 
 function updateTransactionHistory(transactions) {
     const transactionList = document.getElementById('transaction-list');
-    transactionList.innerHTML = ''; // Clear existing transactions
+    transactionList.innerHTML = '';
     transactions.forEach(tx => {
         const li = document.createElement('li');
         li.textContent = `Previous Balance: ${tx.previousBalance}, Current Balance: ${tx.currentBalance}`;
@@ -42,7 +50,7 @@ function updateTransactionHistory(transactions) {
 async function withdrawBalance() {
     const currentBalance = parseFloat(document.getElementById('mined-balance').textContent);
     if (currentBalance > 0) {
-        const address = document.getElementById('wallet-address').value;
+        const address = localStorage.getItem('userWalletAddress');
         try {
             const transaction = await web3.eth.sendTransaction({
                 from: address,
@@ -50,9 +58,7 @@ async function withdrawBalance() {
                 value: web3.utils.toWei(currentBalance.toString(), 'ether')
             });
             console.log('Transaction successful:', transaction);
-            updateTransactionHistory([
-                { previousBalance: currentBalance.toFixed(4), currentBalance: "0.0000" }
-            ]);
+            updateTransactionHistory([{ previousBalance: currentBalance.toFixed(4), currentBalance: "0.0000" }]);
             document.getElementById('mined-balance').textContent = "0.0000";
         } catch (error) {
             console.error("Error during withdrawal:", error);
