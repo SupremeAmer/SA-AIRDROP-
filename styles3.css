@@ -5,18 +5,48 @@ body {
     height: 100vh;
     margin: 0;
 }
-
-.mining-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  background-color: #333;
+  color: #fff;
 }
 
-.timer, .coin-balance {
-    font-size: 1.5em;
-    margin: 10px;
+.logo {
+  margin-right: 20px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+}
+
+.separator {
+  font-size: 24px;
+  color: #fff;
+  margin: 0 20px;
+}
+
+.social-media {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.social-media li {
+  margin-right: 20px;
+}
+
+.social-media a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  color: #ccc;
 }
 
 button {
