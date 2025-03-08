@@ -1,22 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupremeAmer Coin Airdrop</title>
-    <link rel="stylesheet" href="styles3.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SupremeAmercoin Airdrop Miner</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('background_image.jpg');
+        background-size: cover;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
-    
-<head>
-    <h1><button onclick="navigate('=')"></button> <img src=
+<div class="container">
+    <div>
+        <h1>Supreme Amercoin Airdrop Miner</h1>
+        <img src="coin_logo.png" alt="Coin Logo">
+        <p>Mining Rate: 0.002 SupremeAmercoin per second</p>
+        <p id="timer"></p>
+        <button id="startBtn">Start Mining</button>
+    </div>
+</div>
+<footer>
+    <button>Home</button>
+    <button>Tasks</button>
+    <button>Wallet</button>
+</footer>
+<script>
+    let mining = false;
+    let balance = 0;
 
- <footer>
-        <button onclick="navigate('home.html')">🏠</button>
-        <button onclick="navigate('task.html')">📜</button>
-        <button onclick="navigate('friends')">🫂</button>
-        <button onclick="navigate('wallet.html')">💸</button>
-    </footer>
-    <script src="script.js"></script>
+    function startMining() {
+        mining = true;
+        let startTime = Date.now();
+
+        const timerInterval = setInterval(() => {
+            if (mining) {
+                const elapsedTime = Date.now() - startTime;
+                const minedAmount = elapsedTime * 0.002 / 1000;
+                balance += minedAmount;
+                document.getElementById('timer').textContent = `Mined: ${balance.toFixed(3)} SupremeAmercoin`;
+
+                if (elapsedTime >= 43200000) { // 12 hours in milliseconds
+                    clearInterval(timerInterval);
+                    mining = false;
+                    document.getElementById('timer').textContent = 'Mining Stopped';
+                }
+            }
+        }, 1000);
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startMining);
+</script>
 </body>
 </html>
