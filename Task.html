@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SupremeAmercoin Airdrop Miner</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupremeAmercoin Airdrop Miner</title>
 </head>
 <body>
-<div class="container">
-    <div>
-        <h1>Supreme Amercoin Airdrop Miner</h1>
-          <p>Mining Rate: 0.002 SupremeAmercoin per second</p>
-        <p id="timer"></p>
-        <button id="startBtn">Start Mining</button>
-    
+    <div class="container">
+        <div>
+            <h1>Supreme Amercoin Airdrop Miner</h1>
+            <p>Mining Rate: 0.002 SupremeAmercoin per second</p>
+            <p id="timer"></p>
+            <button id="startBtn">Start Mining</button>
+            <p>Coin Balance: <span id="balance">0</span> SupremeAmercoin</p>
+        </div>
     </div>
-</div>
-<footer>
-    <button>Home</button></b>
-    <button>Tasks</button>
-    <button>Wallet</button>
-</footer>
-<script>
-    let mining = false;
-    let balance = 0;
+    <footer>
+        <button>Home</button>
+        <button>Tasks</button>
+        <button>Wallet</button>
+    </footer>
+    <script>
+        let mining = false;
+        let balance = parseFloat(localStorage.getItem('balance')) || 0;
+        let startTime = parseInt(localStorage.getItem('startTime')) || Date.now();
 
-    function startMining() {
-        mining = true;
-        let startTime = Date.now();
+        document.getElementById('balance').textContent = balance.toFixed(3);
 
-        const timerInterval = setInterval(() => {
-            if (mining) {
-                const elapsedTime = Date.now() - startTime;
-                const minedAmount = elapsedTime * 0.002 / 1000;
-                balance += minedAmount;
-                document.getElementById('timer').textContent = `Mined: ${balance.toFixed(3)} SupremeAmercoin`;
+        function startMining() {
+            mining = true;
+            startTime = Date.now();
+            localStorage.setItem('startTime', startTime);
 
-                if (elapsedTime >= 43200000) { // 12 hours in milliseconds
-                    clearInterval(timerInterval);
-                    mining = false;
-                    document.getElementById('timer').textContent = 'Mining Stopped';
+            const timerInterval = setInterval(() => {
+                if (mining) {
+                    const elapsedTime = Date.now() - startTime;
+                    const minedAmount = elapsedTime * 0.002 / 1000;
+                    balance += minedAmount;
+                    document.getElementById('timer').textContent = `Mined: ${balance.toFixed(3)} SupremeAmercoin`;
+                    document.getElementById('balance').textContent = balance.toFixed(3);
+                    localStorage.setItem('balance', balance);
+
+                    if (elapsedTime >= 43200000) { // 12 hours in milliseconds
+                        clearInterval(timerInterval);
+                        mining = false;
+                        document.getElementById('timer').textContent = 'Mining Stopped';
+                    }
                 }
-            }
-        }, 1000);
-    }
+            }, 1000);
+        }
 
-    document.getElementById('startBtn').addEventListener('click', startMining);
-</script>
+        document.getElementById('startBtn').addEventListener('click', startMining);
+
+        // Resume mining if previously started
+        if (localStorage.getItem('startTime')) {
+            startMining();
+        }
+    </script>
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-image: url('IMG-20250308-WA0006.jpg');
-        background-size: cover;
-        color: white;
-        font-family: Arial, sans-serif;
-    }
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        padding:  35px;
-    }
-    button {
-        padding: 15px 35px;
-        font-size: 16px;
-        background-color: #2ecc71;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('IMG-20250308-WA0006.jpg');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 35px;
+        }
+        button {
+            padding: 15px 35px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </body>
 </html>
