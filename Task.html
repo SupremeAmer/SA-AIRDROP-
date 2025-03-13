@@ -1,3 +1,6 @@
+Here's the updated code:
+
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +35,18 @@
             border: none;
             cursor: pointer;
         }
+        .spin-btn {
+            position: fixed;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            padding: 15px 35px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
         footer {
             position: fixed;
             bottom: 0;
@@ -57,12 +72,13 @@
     <div class="container">
         <div>
             <h1>Supreme Amercoin Airdrop Miner</h1>
-            <p>Mining Rate: 0.002 SupremeAmercoin per second</p>
+            <p id="mining-rate">Mining Rate: 0.002 SupremeAmercoin per second</p>
             <p id="timer"></p>
             <button id="startBtn">Start Mining</button>
             <p>Coin Balance: <span id="balance">0</span> SupremeAmercoin</p>
         </div>
         <button class="boost-btn" id="boostBtn">Boost</button>
+        <button class="spin-btn" id="spinBtn">Spin</button>
     </div>
     <footer>
         <button>Home</button>
@@ -73,9 +89,11 @@
         let mining = false;
         let balance = parseFloat(localStorage.getItem('balance')) || 0;
         let startTime = parseInt(localStorage.getItem('startTime')) || Date.now();
+        let miningRate = 0.002;
         let boostMultiplier = 1;
 
         document.getElementById('balance').textContent = balance.toFixed(3);
+        document.getElementById('mining-rate').textContent = `Mining Rate: ${miningRate} SupremeAmercoin per second`;
 
         function startMining() {
             mining = true;
@@ -84,7 +102,7 @@
             const timerInterval = setInterval(() => {
                 if (mining) {
                     const elapsedTime = Date.now() - startTime;
-                    const minedAmount = elapsedTime * 0.002 * boostMultiplier / 1000;
+                    const minedAmount = elapsedTime * miningRate * boostMultiplier / 1000;
                     balance += minedAmount;
                     document.getElementById('timer').textContent = `Mined: ${balance.toFixed(3)} SupremeAmercoin`;
                     document.getElementById('balance').textContent = balance.toFixed(3);
@@ -101,17 +119,32 @@
         document.getElementById('startBtn').addEventListener('click', startMining);
 
         document.getElementById('boostBtn').addEventListener('click', () => {
-            boostMultiplier = 2; // Temporary boost multiplier
+            boostMultiplier = 1.005; // Increase mining rate by 0.5%
+            miningRate *= boostMultiplier;
+            document.getElementById('mining-rate').textContent = `Mining Rate: ${miningRate.toFixed(4)} SupremeAmercoin per second`;
             setTimeout(() => {
                 boostMultiplier = 1; // Reset boost multiplier after 1 minute
+                miningRate /= boostMultiplier;
+                document.getElementById('mining-rate').textContent = `Mining Rate: ${miningRate.toFixed(4)} SupremeAmercoin per second`;
             }, 60000);
             alert('Boost activated for 1 minute!');
         });
 
-        // Resume mining if previously started
-        if (localStorage.getItem('startTime')) {
-            startMining();
-        }
-    </script>
+  document.getElementById('spinBtn').addEventListener('click', () => {
+        window.location.href = 'spin.html'; // Redirect to spin page
+    });
+
+    // Update balance display when page loads
+    window.addEventListener('load', () => {
+        let balance = parseFloat(localStorage.getItem('balance')) || 0;
+        document.getElementById('balance').textContent = balance.toFixed(3);
+    });
+
+    // Update balance when spin reward is added
+    window.addEventListener('storage', () => {
+        let balance = parseFloat(localStorage.getItem('balance')) || 0;
+        document.getElementById('balance').textContent = balance.toFixed(3);
+    });
+</script>
 </body>
 </html>
