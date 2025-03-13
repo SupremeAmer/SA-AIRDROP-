@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin Page</title>
+    <style>
+        body {
+            background-color: #ccc; /* Ash background */
+            font-family: Arial, sans-serif;
+        }
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+        }
+        .wheel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-image: linear-gradient(45deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082);
+            transition: transform 5s ease-out;
+        }
+        .indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .spin-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffa07a; /* Orange button */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .buy-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #ffa07a; /* Orange button */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .chances-timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <button class="buy-btn" id="buyBtn">Buy Spins</button>
+    <div class="wheel-container">
+        <div class="wheel" id="wheel"></div>
+        <div class="indicator" id="indicator"></div>
+        <button class="spin-btn" id="spinBtn">Spin</button>
+    </div>
+    <div class="chances-timer" id="chancesTimer"></div>
+
+    <script>
+        let spins = 10; // Initial spins
+        let spinChances = 10; // Spin chances per 7 hours
+        let spinCost = 20; // Spin cost in crypto
+        let spinReward = [100, 130, 500, 10, 50, 1000]; // Spin rewards
+        let spinCount = 0; // Spin count
+        let rewardIndex = 0; // Reward index
+        let chancesTimer = null; // Chances timer
+
+        document.getElementById('spinBtn').addEventListener('click', () => {
+            if (spins > 0) {
+                spins--;
+                spinCount++;
+                rewardIndex = Math.floor(Math.random() * spinReward.length);
+                document.getElementById('indicator').textContent = spinReward[rewardIndex];
+                document.getElementById('wheel').style.transform = `rotate(${Math.random() * 360}deg)`;
+                // Play spin sound effect
+                const spinSound = new Audio('spin.mp3');
+                spinSound.play();
+                setTimeout(() => {
+                    document.getElementById('wheel').style.transform = `rotate(0deg)`;
+                }, 5000);
+                if (spinCount >= 18) {
+                    document.getElementById('indicator').textContent = '1000';
+                    spinCount = 0;
+                } else if (spinCount >= 10) {
+                    document.getElementById('indicator').textContent = '500';
+                    spinCount = 0;
+                }
+            } else {
+                alert('No more spins available!');
+            }
+        });
+
+        document.getElementById('buyBtn').addEventListener('click', () => {
+            // Buy spins logic here
+            spins += spinCost;
+            alert(`You have purchased ${spinCost} spins!`);
+        });
+
+        // Start chances timer
+        chancesTimer = setInterval(() => {
+            spinChances--;
+            document.getElementById('chancesTimer').textContent = `Chances: ${spinChances} / 10`;
+            if (spinChances <= 0) {
+                clearInterval(chancesTimer);
+                alert('No more chances available!');
+            }
+        }, 25200000); // 7 hours in milliseconds
+
+        // Initialize chances timer display
+     document.getElementById('chancesTimer').textContent = `Chances: ${spinChances} / 10`;
+    </script>
+</body>
+</html>
