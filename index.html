@@ -1,71 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupremeAmer Coin Airdrop</title>
-    <link rel="stylesheet" href="styles.css">
-  
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>SupremeAmer Token Miner</title>
  </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#How to Participate">How to Participate</a></li>
-                <li><a href="#faqs">FAQs</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="hero">
-            <h1>SupremeAmer Coin Airdrop</h1>
-            <p>Claim your free 💰SupremeAmer coins now!</p>
-            </section>
-        <section id="about">
-            <h2>About SupremeAmer Coin</h2>
-            <p>SupremeAmer Coin is a new cryptocurrency designed for to move the world  of crypto to the moon🚀🚀, $SA is well defined contract deployed under the ethereum with 1 Billion as the total supply.</p>
-           <p>import $SA in ur web3 wallet using this contract:</p>
-        </section>
-        <section id="how-to-participate">
-            <h2>How to Participate in the Airdrop</h2>
-            <ol>
-                <li>Follow us on Whatsapp platforms .</li>
-                <li>Join our Telegram group .</li>
-                <li>Fill out the participation form.</li>
-            </ol>
-        </section>
-        <section id="faqs">
-            <h2>Frequently Asked Questions</h2>
-            <ul>
-                <li>
-                    <strong>Q: What is the SupremeAmer Coin airdrop?</strong>
-                    <p>A: The SupremeAmer Coin airdrop is a free distribution of SupremeAmer coins to participants who follow our social media accounts, join our Telegram group, and fill out the participation form.</p>
-                </li>
-                <li>
-                    <strong>Q: How many coins will I receive?</strong>
-                    <p>A: The number of coins you'll receive will be determined by our team and announced soon.</p>
-               
-                </li>
-
-            </ul>
-        
+ <body>
+ <main>
+ <section id="miner-section">
+ <h2>SupremeAmer Token Miner</h2>
+ <p id="mined-sac">Mined SAC: 0</p>
+ <p id="mining-sac">Mining SAC: 0.0005 SAC/s</p>
+ <button id="start-button">Start Mining</button>
+ <button id="stop-button" style="display: none;">Stop Mining</button>
+ </section>
+ </main>
+ <section id="history">
+    <h4> HISTORY OF CRYPTO MINING</h4>
+    <p> crypto mining is the act of mining crypto asset gradually using verious means in which crypto asset 
+        could be mined, there are trillions of crypto ditial asset that is obtain through the process of mining, asset like:
+       <li>Ethereum</li> 
+        <li>Bitcoin</li>
+        <li>Binance coin</li>
+        <li>Toncoin</li>
+        <li>and here now SUPREMEAMER TOKEN. </li>
+        Some of this asset are self-hosted blockchain which makes them independable on other blockchain,
+        today $SAC is an asset to be mined under the Ethereum blockchain.
+    </p>
 
 
-<a href="Task.html">
-  <button style="background-color: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-    Participate
-  </button>
-</a>
+</section>
 
-
-
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 SupremeAmer Coin. All rights reserved.</p>
+<footer>
+    <nav>
+    <ul>
+    <li><a href="miner.html">home</a></li>
+    <li><a href="Task1.html">TASK</a></li>
+    <li><a href="wallet1.html">WITHDRAW</a></li>
+    </ul>
+    </nav>
     </footer>
-            <script src="https://cdn.jsdelivr.net/npm/web3@1.7.0/dist/web3.min.js"></script>
-</body>
-</html>
+<style>
+body {
+background-color: #1b0233;
+background-size: cover;
+font-family: Arial, sans-serif;
+}
+#miner-section {
+width: 80%;
+margin: 40px auto;
+background-color: #2ebed8;
+padding: 20px;
+border: 2px solid #990707;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 19px;
+}
+#mined-sac, #mining-sac {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+#start-button, #stop-button {
+width: 100%;
+height: 40px;
+font-size: 18px;
+font-weight: bold;
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+#stop-button {
+background-color: #e74c3c;
+border: 2px solid #2791c2;
+border-radius: 19px;
+}
+#history{
+    background-color: #2ebed8;
+    border: 2px solid #990707;
+border-radius: 19px;
+}
 
+footer {
+background-color: #333;
+color: #fff;
+padding: 1em;
+text-align: center;
+clear: both;
+border-radius: 12px;
+border: 1px solid #990707;
+}
+footer nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: space-between;
+}
+footer nav ul li {
+margin-right: 20px;
+
+}
+footer nav a {
+color: #fff;
+text-decoration: none;
+}
+</style>
+ <script src="miner.js"></script>
+ </body>
+ </html>
+ 
