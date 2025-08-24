@@ -3,1126 +3,1004 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupremeAmer Wallet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <title>Grace Community Church - Documentation & Resources</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff9800;
-            --secondary-color: #fdc500;
-            --accent-color: #ff3333;
-            --dark-bg: #111;
-            --light-bg: #fffde4;
-            --text-dark: #fff;
-            --text-light: #333;
-            --card-bg-dark: rgba(30, 30, 40, 0.95);
-            --card-bg-light: rgba(255,255,255,0.90);
+            --primary: #2E4C6D;
+            --secondary: #DAA520;
+            --accent: #39603D;
+            --light: #F8F0E3;
+            --dark: #333333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, var(--dark-bg) 70%, var(--primary-color) 100%);
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            padding-bottom: 80px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
         }
-        body.light {
-            background: linear-gradient(135deg, var(--light-bg) 60%, #f7b733 100%);
-            color: var(--text-light);
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         /* Header Styles */
-        .header {
-            width: 100%;
-            padding: 25px 0 10px 0;
-            text-align: center;
-            background: rgba(0,0,0,0.7);
-            font-size: 2.4em;
-            font-weight: bold;
-            letter-spacing: 2px;
-            box-shadow: 0 2px 16px rgba(255, 235, 59, 0.2);
-            position: relative;
-            transition: all 0.3s;
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
             z-index: 1000;
-        }
-        body.light .header {
-            background: rgba(255,255,255,0.75);
+            box-shadow: var(--shadow);
         }
         
-        /* Profile Dropdown */
-        .emoji-avatar {
-            font-size: 1.5em;
-            vertical-align: middle;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            transition: transform 0.2s;
-            width: 40px;
-            height: 40px;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
         }
-        .emoji-avatar:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.1);
+        
+        .logo span {
+            color: var(--secondary);
         }
-        .profile-dropdown-content {
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .menu-toggle {
             display: none;
-            position: absolute;
-            right: 5vw;
-            top: 70px;
-            background: #222;
-            min-width: 210px;
-            border-radius: 10px;
-            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.67);
-            z-index: 1001;
-            color: #fff;
-            font-size: 1em;
-            margin-top: 6px;
-            animation: fadeIn 0.22s;
-            text-align: left;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 0;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
         }
-        body.light .profile-dropdown-content {
-            background: rgba(255, 255, 255, 0.85);
-            color: #222;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 76, 109, 0.8), rgba(46, 76, 109, 0.8)), url('https://images.unsplash.com/photo-1518837683465-8f6c1c346cac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .profile-dropdown-content hr {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 6px 0;
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .profile-dropdown-content a, .profile-dropdown-content button {
-            color: var(--accent-color);
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            display: block;
-            transition: all 0.2s;
-            border-radius: 5px;
-            padding: 8px 18px;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95em;
-        }
-        .profile-dropdown-content a:hover, .profile-dropdown-content button:hover {
-            background: #333;
-            color: #fff;
-        }
-        body.light .profile-dropdown-content a:hover, 
-        body.light .profile-dropdown-content button:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-        .theme-toggle-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .theme-toggle-item span {
-            margin-right: 10px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
         }
         
-        /* Marquee */
-        .marquee {
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            color: #222;
-            font-size: 1.2em;
-            padding: 8px 0;
-            margin-bottom: 18px;
-            border-radius: 0 0 16px 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            position: relative;
-            height: 1.5em;
-            width: 100%;
-            z-index: 999;
-        }
-        .marquee-text {
-            display: inline-block;
-            position: absolute;
-            left: 100%;
-            animation: marquee 15s linear infinite;
-            white-space: nowrap;
-            will-change: transform;
-            padding-right: 20px;
-        }
-        @keyframes marquee {
-            0%   { transform: translateX(0%); }
-            100% { transform: translateX(-100vw); }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
         }
         
-        /* Main Container */
-        .container {
-            background: var(--card-bg-dark);
-            padding: 36px 32px 28px 32px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.38);
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
             text-align: center;
-            max-width: 500px;
-            width: 90%;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            margin: 20px auto;
+            margin-bottom: 60px;
         }
-        .container::before {
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 184, 0, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: rotate 60s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        body.light .container {
-            background: var(--card-bg-light);
-            color: var(--text-light);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
         }
         
-        /* Wallet Info */
-        .wallet-info {
-            background: rgba(255, 184, 0, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-            border: 1px solid rgba(255, 184, 0, 0.2);
-        }
-        .wallet-info h3 {
-            margin-top: 0;
-            color: var(--secondary-color);
-            border-bottom: 1px solid rgba(255, 184, 0, 0.3);
-            padding-bottom: 8px;
-        }
-        .wallet-address {
-            font-family: monospace;
-            word-break: break-all;
-            background: rgba(0,0,0,0.2);
-            padding: 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin: 5px 0;
-        }
-        .balance {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin: 10px 0;
+        /* Sermons Section */
+        .sermons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px;
+        .sermon-card {
+            background-color: white;
             border-radius: 8px;
-            border: 1px solid rgba(255, 184, 0, 0.3);
-            background: rgba(0,0,0,0.2);
-            color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif;
-        }
-        body.light .form-group input, 
-        body.light .form-group select, 
-        body.light .form-group textarea {
-            background: rgba(255,255,255,0.8);
-            color: var(--text-light);
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(255, 184, 0, 0.2);
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 12px 24px;
-            background: linear-gradient(90deg, var(--secondary-color) 40%, var(--primary-color) 100%);
-            color: #111;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 16px rgba(255, 152, 0, 0.4);
-            margin: 10px 5px;
-            position: relative;
             overflow: hidden;
-            display: inline-block;
-        }
-        .btn:hover {
-            background: linear-gradient(90deg, var(--primary-color) 40%, var(--secondary-color) 100%);
-            box-shadow: 0 8px 24px rgba(255, 152, 0, 0.6);
-            transform: translateY(-2px);
-        }
-        .btn:active {
-            transform: translateY(0);
-        }
-        .btn[disabled] {
-            opacity: 0.65;
-            cursor: not-allowed;
-            background: #ccc;
-            box-shadow: none;
-        }
-        .btn[disabled]:hover {
-            transform: none;
-        }
-        .btn-secondary {
-            background: linear-gradient(90deg, #666, #999);
-        }
-        .btn-secondary:hover {
-            background: linear-gradient(90deg, #777, #aaa);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
-        /* Status Messages */
-        .status-message {
-            margin: 15px 0;
-            padding: 10px;
+        .sermon-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .sermon-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .sermon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .sermon-card:hover .sermon-image img {
+            transform: scale(1.05);
+        }
+        
+        .sermon-content {
+            padding: 25px;
+        }
+        
+        .sermon-date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .sermon-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .sermon-meta {
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .sermon-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .sermon-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .sermon-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .sermon-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .sermon-btn:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        /* Events Section */
+        .events {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .events .section-title h2 {
+            color: white;
+        }
+        
+        .events-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary);
+        }
+        
+        .event-item {
+            width: 50%;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        
+        .event-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+        }
+        
+        .event-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+        
+        .event-content {
+            background-color: white;
+            color: var(--dark);
+            padding: 25px;
             border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .event-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .event-item:nth-child(odd) .event-content::after {
+            right: -10px;
+            transform: translateX(50%);
+        }
+        
+        .event-item:nth-child(even) .event-content::after {
+            left: -10px;
+            transform: translateX(-50%);
+        }
+        
+        .event-date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .event-content h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card p {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .leader-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
             text-align: center;
         }
-        .success {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-        }
-        .error {
-            background: rgba(255, 51, 51, 0.2);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-        }
-        .info {
-            background: rgba(33, 150, 243, 0.2);
-            color: #2196F3;
-            border: 1px solid #2196F3;
+        
+        .leader-image {
+            height: 250px;
+            overflow: hidden;
         }
         
-        /* Transaction History */
-        .transactions {
-            margin-top: 20px;
-            max-height: 300px;
-            overflow-y: auto;
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .transaction {
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
+        
+        .leader-info {
+            padding: 25px;
+        }
+        
+        .leader-name {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .leader-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 30px;
+        }
+        
+        .contact-detail {
             display: flex;
-            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
             align-items: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
         }
-        .transaction-amount {
-            font-weight: bold;
-            color: var(--secondary-color);
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
         }
-        .transaction-date {
-            font-size: 0.8em;
-            color: #aaa;
+        
+        .map-container {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
-        .transaction-status {
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-        .status-pending {
-            background: rgba(255, 235, 59, 0.2);
-            color: #FFEB3B;
-        }
-        .status-completed {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-        }
-        .status-failed {
-            background: rgba(255, 51, 51, 0.2);
-            color: var(--accent-color);
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         /* Footer */
-        .footer {
-            width: 100%;
-            display: flex;
-            justify-content: space-evenly;
-            gap: 0;
-            padding: 18px 0;
-            background: rgba(255, 184, 0, 0.09);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            border-radius: 18px 18px 0 0;
-            box-shadow: 0 -4px 24px rgba(255, 152, 0, 0.13);
-            z-index: 999;
-            backdrop-filter: blur(5px);
-        }
-        .footer button {
-            background: #fff;
-            color: var(--primary-color);
-            border: none;
-            border-radius: 50%;
-            width: 52px;
-            height: 52px;
-            font-size: 1.5em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(34, 34, 34, 0.13);
-            transition: all 0.2s;
-            cursor: pointer;
-            position: relative;
-        }
-        .footer button:hover {
-            background: var(--primary-color);
-            color: #fff;
-            transform: translateY(-5px);
-        }
-        .footer button.active {
-            background: var(--primary-color);
-            color: #fff;
-        }
-        .footer button .tooltip {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8em;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.2s;
-        }
-        .footer button:hover .tooltip {
-            opacity: 1;
-            bottom: 65px;
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
         }
         
-        /* Tabs */
-        .tabs {
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .service-times {
+            list-style: none;
+        }
+        
+        .service-times li {
+            margin-bottom: 12px;
             display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 184, 0, 0.3);
-        }
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-        }
-        .tab.active {
-            border-bottom: 3px solid var(--primary-color);
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-        .tab:hover:not(.active) {
-            border-bottom: 3px solid rgba(255, 184, 0, 0.5);
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
         }
         
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Wallet Connection Options */
-        .wallet-options {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        .wallet-options-content {
-            background: var(--card-bg-dark);
-            padding: 20px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 400px;
+        .copyright {
             text-align: center;
-        }
-        body.light .wallet-options-content {
-            background: var(--card-bg-light);
-        }
-        .wallet-option {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        body.light .wallet-option {
-            background: rgba(0,0,0,0.05);
-        }
-        .wallet-option:hover {
-            background: rgba(255,255,255,0.2);
-        }
-        body.light .wallet-option:hover {
-            background: rgba(0,0,0,0.1);
-        }
-        .wallet-option img {
-            width: 30px;
-            height: 30px;
-            margin-right: 15px;
-        }
-        .close-wallet-options {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 14px;
         }
         
-        /* Responsive */
-        @media (max-width:600px) {
-            .profile-dropdown-content { 
-                min-width: 180px; 
-                font-size:0.95em;
-                right: 3vw;
-                top: 65px;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .events-timeline::before {
+                left: 30px;
             }
-            .header { font-size: 1.8em; padding-top: 15px; }
-            #profileDropdownBtn { right: 15px; top: 15px; font-size: 1.5em; }
-            .container { padding: 20px 15px; }
-            .emoji-avatar {
-                font-size: 1.2em;
-                width: 36px;
-                height: 36px;
+            
+            .event-item {
+                width: 100%;
+                padding: 20px 0 20px 60px;
+                left: 0;
+            }
+            
+            .event-item:nth-child(even) {
+                left: 0;
+                padding-left: 60px;
+            }
+            
+            .event-content::after {
+                left: -30px !important;
+                transform: translateX(-50%) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--primary);
+                width: 100%;
+                height: calc(100vh - 80px);
+                padding: 40px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        SUPREMEAMER WALLET
-        <button id="profileDropdownBtn" class="emoji-avatar" style="position:absolute; top:18px; right:28px;">👤</button>
-        <div id="profileDropdownMenu" class="profile-dropdown-content">
-            <div id="dropdownUsername" style="padding:8px 18px; font-weight:bold;"><span class="emoji-avatar">🧑</span> </div>
-            <div id="dropdownEmail" style="padding:0 18px 8px 18px; color:var(--secondary-color); font-size:0.96em;"><span class="emoji-avatar">✉️</span></div>
-            <hr style="margin:8px 0; border:0; border-top:1px solid #333;">
-            <button id="themeToggleBtn" class="theme-toggle-item">
-                <span>Dark Mode</span>
-                <span id="themeToggleIcon">🌙</span>
-            </button>
-            <a href="#" id="logoutBtn">Logout</a>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Grace<span>Community</span></a>
+            
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sermons">Sermons</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </div>
-    
-    <div class="marquee">
-        <span class="marquee-text">🚀 SupremeAmer Wallet - Connect your wallet to manage your SA tokens and withdraw your earnings! 💰</span>
-    </div>
-    
-    <!-- Wallet Connection Options Modal -->
-    <div class="wallet-options" id="walletOptions">
-        <div class="wallet-options-content">
-            <button class="close-wallet-options" id="closeWalletOptions">&times;</button>
-            <h3>Connect Wallet</h3>
-            <p>Choose your wallet provider</p>
-            
-            <div class="wallet-option" id="metamaskOption">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask">
-                <span>MetaMask</span>
-            </div>
-            
-            <div class="wallet-option" id="trustWalletOption">
-                <img src="https://trustwallet.com/assets/images/media/assets/TWT.png" alt="Trust Wallet">
-                <span>Trust Wallet</span>
-            </div>
-            
-            <div class="wallet-option" id="walletConnectOption">
-                <img src="https://walletconnect.com/walletconnect-logo.png" alt="WalletConnect">
-                <span>WalletConnect</span>
-            </div>
-            
-            <div class="wallet-option" id="binanceWalletOption">
-                <img src="https://bin.bnbstatic.com/static/images/common/favicon.ico" alt="Binance Chain Wallet">
-                <span>Binance Chain Wallet</span>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Welcome to Grace Community Church</h1>
+            <p>Growing in faith, serving with love, and sharing the hope of Christ with our community.</p>
+            <div class="hero-buttons">
+                <a href="#sermons" class="btn">Listen to Sermons</a>
+                <a href="#events" class="btn btn-outline">Upcoming Events</a>
             </div>
         </div>
-    </div>
-    
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Tabs -->
-        <div class="tabs">
-            <div class="tab active" data-tab="wallet">Wallet</div>
-            <div class="tab" data-tab="withdraw">Withdraw</div>
-            <div class="tab" data-tab="transactions">Transactions</div>
-        </div>
-        
-        <!-- Wallet Tab -->
-        <div id="wallet-tab" class="tab-content active">
-            <div class="wallet-info">
-                <h3>Wallet Information</h3>
-                <div id="walletStatus">Please connect your wallet</div>
-                <div id="walletAddress" class="wallet-address" style="display:none;"></div>
-                <div class="balance" id="walletBalance">0 SA</div>
-                <div id="networkInfo"></div>
+    </section>
+
+    <!-- Sermons Section -->
+    <section id="sermons" class="sermons">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Sermons</h2>
             </div>
             
-            <button id="connectWalletBtn" class="btn">
-                <i class="fas fa-wallet" style="margin-right: 8px;"></i>Connect Wallet
-            </button>
-            
-            <button id="disconnectWalletBtn" class="btn btn-secondary" style="display:none;">
-                <i class="fas fa-unlink" style="margin-right: 8px;"></i>Disconnect
-            </button>
-            
-            <div id="walletMessage" class="status-message" style="display:none;"></div>
-        </div>
-        
-        <!-- Withdraw Tab -->
-        <div id="withdraw-tab" class="tab-content">
-            <div class="wallet-info">
-                <h3>Withdraw SupremeAmer Tokens</h3>
-                <p>Withdraw your SA tokens to your wallet address. Processing takes 2-5 working days.</p>
-                <p><strong>Withdrawal Fee:</strong> 0.5$ worth of BNB</p>
-            </div>
-            
-            <form id="withdrawForm">
-                <div class="form-group">
-                    <label for="withdrawAmount">Amount to Withdraw (SA)</label>
-                    <input type="number" id="withdrawAmount" placeholder="Enter amount" min="50000" step="1" required>
+            <div class="sermons-grid">
+                <div class="sermon-card">
+                    <div class="sermon-image">
+                        <img src="https://images.unsplash.com/photo-1508963493747-53f7195824e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+                    </div>
+                    <div class="sermon-content">
+                        <span class="sermon-date">June 12, 2023</span>
+                        <h3>The Power of Faith in Difficult Times</h3>
+                        <div class="sermon-meta">
+                            <span><i class="fas fa-user"></i> Pastor John Smith</span>
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                        </div>
+                        <p>Exploring how faith can sustain us through life's most challenging moments.</p>
+                        <div class="sermon-actions">
+                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="recipientAddress">Your SA Token Address</label>
-                    <input type="text" id="recipientAddress" placeholder="Enter your SA token address" required>
+                <div class="sermon-card">
+                    <div class="sermon-image">
+                        <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+                    </div>
+                    <div class="sermon-content">
+                        <span class="sermon-date">June 5, 2023</span>
+                        <h3>Building a Community of Love</h3>
+                        <div class="sermon-meta">
+                            <span><i class="fas fa-user"></i> Pastor Sarah Johnson</span>
+                            <span><i class="fas fa-clock"></i> 38 min</span>
+                        </div>
+                        <p>How we can create a welcoming and loving church community that reflects Christ's love.</p>
+                        <div class="sermon-actions">
+                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="userEmail">Email Address</label>
-                    <input type="email" id="userEmail" placeholder="Enter your email" required>
+                <div class="sermon-card">
+                    <div class="sermon-image">
+                        <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+                    </div>
+                    <div class="sermon-content">
+                        <span class="sermon-date">May 29, 2023</span>
+                        <h3>Finding Purpose in God's Plan</h3>
+                        <div class="sermon-meta">
+                            <span><i class="fas fa-user"></i> Pastor Michael Brown</span>
+                            <span><i class="fas fa-clock"></i> 42 min</span>
+                        </div>
+                        <p>Discovering how to align our lives with God's purpose for us.</p>
+                        <div class="sermon-actions">
+                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="additionalNotes">Additional Notes (Optional)</label>
-                    <textarea id="additionalNotes" rows="3" placeholder="Any additional information"></textarea>
-                </div>
-                
-                <button type="submit" id="submitWithdrawBtn" class="btn" disabled>
-                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Submit Withdrawal Request
-                </button>
-            </form>
-            
-            <div id="withdrawMessage" class="status-message" style="display:none;"></div>
+            </div>
         </div>
-        
-        <!-- Transactions Tab -->
-        <div id="transactions-tab" class="tab-content">
-            <div class="wallet-info">
-                <h3>Transaction History</h3>
-                <p>Your recent withdrawal requests and transactions</p>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events</h2>
             </div>
             
-            <div class="transactions" id="transactionsList">
-                <div style="text-align:center; padding:20px; color:#aaa;">No transactions yet</div>
+            <div class="events-timeline">
+                <div class="event-item">
+                    <div class="event-content">
+                        <span class="event-date">June 18, 2023 | 10:00 AM</span>
+                        <h3>Sunday Worship Service</h3>
+                        <p>Join us for our weekly worship service with communion. Special music by the choir.</p>
+                        <a href="#" class="btn">More Info</a>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-content">
+                        <span class="event-date">June 20, 2023 | 6:30 PM</span>
+                        <h3>Youth Group Meeting</h3>
+                        <p>All youth ages 13-18 are invited for fellowship, games, and Bible study.</p>
+                        <a href="#" class="btn">More Info</a>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-content">
+                        <span class="event-date">June 25, 2023 | 12:00 PM</span>
+                        <h3>Church Picnic</h3>
+                        <p>Annual church picnic at Riverside Park. Food, games, and fellowship for all ages.</p>
+                        <a href="#" class="btn">More Info</a>
+                    </div>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-content">
+                        <span class="event-date">July 5-7, 2023</span>
+                        <h3>Summer Bible Conference</h3>
+                        <p>Three days of teaching, worship, and fellowship with guest speaker Dr. James Williams.</p>
+                        <a href="#" class="btn">More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <div class="section-title">
+                <h2>Church Resources</h2>
             </div>
             
-            <button id="refreshTransactionsBtn" class="btn btn-secondary">
-                <i class="fas fa-sync-alt" style="margin-right: 8px;"></i>Refresh
-            </button>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Bible Study Guides</h3>
+                    <p>Download our weekly Bible study guides for personal or group study.</p>
+                    <a href="#" class="btn">View Resources</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Sermon Archive</h3>
+                    <p>Access our complete library of sermons from the past several years.</p>
+                    <a href="#" class="btn">Browse Archive</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Church Calendar</h3>
+                    <p>Stay up-to-date with all church events and activities.</p>
+                    <a href="#" class="btn">View Calendar</a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Ministry Opportunities</h3>
+                    <p>Find ways to get involved and serve in our church community.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div class="footer">
-        <button onclick="window.location.href='index.html'" title="Home">
-            <i class="fas fa-home"></i>
-            <span class="tooltip">Home</span>
-        </button>
-        <button onclick="window.location.href='Task.html'" title="Tasks">
-            <i class="fas fa-tasks"></i>
-            <span class="tooltip">Tasks</span>
-        </button>
-        <button onclick="window.location.href='wallet.html'" title="Wallet" class="active">
-            <i class="fas fa-wallet"></i>
-            <span class="tooltip">Wallet</span>
-        </button>
-        <button onclick="window.location.href='dapp.html'" title="DApp">
-            <i class="fas fa-gamepad"></i>
-            <span class="tooltip">DApp</span>
-        </button>
-    </div>
-    
-    <!-- Appwrite SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5/dist/ethers.umd.min.js"></script>
-    <!-- WalletConnect connector -->
-    <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership">
+        <div class="container">
+            <div class="section-title">
+                <h2>Church Leadership</h2>
+            </div>
+            
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pastor John Smith">
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">John Smith</h3>
+                        <p class="leader-role">Senior Pastor</p>
+                        <p>Leading Grace Community since 2010 with a passion for teaching God's Word.</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pastor Sarah Johnson">
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">Sarah Johnson</h3>
+                        <p class="leader-role">Associate Pastor</p>
+                        <p>Oversees community outreach and discipleship programs.</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Michael Brown">
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">Michael Brown</h3>
+                        <p class="leader-role">Youth Pastor</p>
+                        <p>Leads our youth ministry with energy and creativity.</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-image">
+                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Rebecca Davis">
+                    </div>
+                    <div class="leader-info">
+                        <h3 class="leader-name">Rebecca Davis</h3>
+                        <p class="leader-role">Worship Director</p>
+                        <p>Leads our worship ministry and choir programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>123 Church Street, Communityville, CV 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@gracecommunitychurch.org</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office Hours</h4>
+                            <p>Monday-Thursday: 9am - 4pm</p>
+                            <p>Friday: 9am - 12pm</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425872426637!3d40.740769871389115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c8eef01%3A0x41c6c2a58c5d5b15!2s123%20Church%20St%2C%20New%20York%2C%20NY%2010006%2C%20USA!5e0!3m2!1sen!2s!4v1686592332345!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Grace Community Church</h4>
+                    <p>Growing in faith, serving with love, and sharing the hope of Christ with our community.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sermons">Sermons</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#leadership">Leadership</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Service Times</h4>
+                    <ul class="service-times">
+                        <li>Sunday Worship <span>10:00 AM</span></li>
+                        <li>Sunday School <span>9:00 AM</span></li>
+                        <li>Youth Group <span>Wed 6:30 PM</span></li>
+                        <li>Prayer Meeting <span>Thu 7:00 PM</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect With Us</h4>
+                    <p>Follow us on social media for updates and inspiration.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Grace Community Church. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-    // ---- CONFIGURATION ----
-    const APPWRITE_ENDPOINT = 'https://fra.cloud.appwrite.io/v1';
-    const APPWRITE_PROJECT = '6839d9640019316a160d';
-    const APPWRITE_DB_ID = '6839dcca000190bf99f6';
-    const APPWRITE_COLLECTION_ID = 'users';
-    const WITHDRAW_FEE_BNB = "0.0017"; // ~0.5$ worth of BNB
-    const WITHDRAW_MIN_SA = 50000;
-    
-    // Appwrite
-    const { Client, Account, Databases, Query } = Appwrite;
-    const client = new Client().setEndpoint(APPWRITE_ENDPOINT).setProject(APPWRITE_PROJECT);
-    const account = new Account(client);
-    const databases = new Databases(client);
-    
-    // Wallet state
-    let walletConnected = false;
-    let currentAccount = null;
-    let provider = null;
-    let signer = null;
-    let walletType = null;
-    
-    // ---- UI Functions ----
-    function showMessage(elementId, message, type = 'info') {
-        const element = document.getElementById(elementId);
-        element.textContent = message;
-        element.className = 'status-message ' + type;
-        element.style.display = 'block';
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
         
-        if (type !== 'error') {
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 5000);
-        }
-    }
-    
-    function formatAddress(address) {
-        if (!address) return '';
-        return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-    }
-    
-    // ---- Wallet Connection ----
-    async function connectWallet(type = 'injected') {
-        try {
-            // Show loading state
-            document.getElementById('connectWalletBtn').disabled = true;
-            document.getElementById('connectWalletBtn').innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Connecting...';
-            
-            if (type === 'injected') {
-                // Standard MetaMask/Trust Wallet/Binance Chain Wallet
-                if (window.ethereum) {
-                    // Request account access
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    currentAccount = accounts[0];
-                    provider = new ethers.providers.Web3Provider(window.ethereum);
-                    walletType = 'injected';
-                } else {
-                    throw new Error('No Ethereum provider found. Please install MetaMask or another wallet.');
-                }
-            } else if (type === 'walletconnect') {
-                // WalletConnect
-                const walletConnectProvider = new WalletConnectProvider.default({
-                    rpc: {
-                        56: "https://bsc-dataseed.binance.org/", // Binance Smart Chain
-                        97: "https://data-seed-prebsc-1-s1.binance.org:8545/" // BSC Testnet
-                    }
-                });
-                
-                // Enable session (triggers QR Code modal)
-                await walletConnectProvider.enable();
-                
-                provider = new ethers.providers.Web3Provider(walletConnectProvider);
-                const accounts = await provider.listAccounts();
-                currentAccount = accounts[0];
-                walletType = 'walletconnect';
-                
-                // Subscribe to accounts change
-                walletConnectProvider.on("accountsChanged", (accounts) => {
-                    currentAccount = accounts[0];
-                    updateWalletUI();
-                });
-                
-                // Subscribe to chainId change
-                walletConnectProvider.on("chainChanged", (chainId) => {
-                    window.location.reload();
-                });
-                
-                // Subscribe to session disconnect
-                walletConnectProvider.on("disconnect", (code, reason) => {
-                    disconnectWallet();
-                });
-            }
-            
-            signer = provider.getSigner();
-            
-            // Get network
-            const network = await provider.getNetwork();
-            
-            // Update UI
-            updateWalletUI();
-            showMessage('walletMessage', 'Wallet connected successfully!', 'success');
-            
-            // Auto-fill wallet address in withdraw form
-            document.getElementById('recipientAddress').value = currentAccount;
-            
-            // Check if user is logged in and get email
-            try {
-                const user = await account.get();
-                const res = await databases.listDocuments(APPWRITE_DB_ID, APPWRITE_COLLECTION_ID, [Query.equal("userId", user.$id)]);
-                if (res.documents.length > 0) {
-                    const profile = res.documents[0];
-                    document.getElementById('userEmail').value = profile.email;
-                }
-            } catch (err) {
-                console.log("Not logged in or error fetching user:", err);
-            }
-            
-            walletConnected = true;
-            
-            // Close wallet options modal if open
-            document.getElementById('walletOptions').style.display = 'none';
-            
-        } catch (error) {
-            console.error("Error connecting wallet:", error);
-            showMessage('walletMessage', 'Error connecting wallet: ' + error.message, 'error');
-            document.getElementById('connectWalletBtn').disabled = false;
-            document.getElementById('connectWalletBtn').innerHTML = '<i class="fas fa-wallet" style="margin-right: 8px;"></i>Connect Wallet';
-        }
-    }
-    
-    function updateWalletUI() {
-        document.getElementById('walletStatus').textContent = 'Wallet Connected';
-        document.getElementById('walletAddress').textContent = currentAccount;
-        document.getElementById('walletAddress').style.display = 'block';
-        
-        // Get network name
-        let networkName = 'Unknown';
-        if (provider.network) {
-            networkName = provider.network.name || `Chain ID: ${provider.network.chainId}`;
-        }
-        document.getElementById('networkInfo').textContent = `Network: ${networkName}`;
-        
-        document.getElementById('connectWalletBtn').style.display = 'none';
-        document.getElementById('disconnectWalletBtn').style.display = 'inline-block';
-        document.getElementById('submitWithdrawBtn').disabled = false;
-    }
-    
-    function disconnectWallet() {
-        currentAccount = null;
-        provider = null;
-        signer = null;
-        walletType = null;
-        
-        document.getElementById('walletStatus').textContent = 'Please connect your wallet';
-        document.getElementById('walletAddress').style.display = 'none';
-        document.getElementById('networkInfo').textContent = '';
-        document.getElementById('connectWalletBtn').style.display = 'inline-block';
-        document.getElementById('connectWalletBtn').disabled = false;
-        document.getElementById('connectWalletBtn').innerHTML = '<i class="fas fa-wallet" style="margin-right: 8px;"></i>Connect Wallet';
-        document.getElementById('disconnectWalletBtn').style.display = 'none';
-        document.getElementById('submitWithdrawBtn').disabled = true;
-        
-        walletConnected = false;
-        showMessage('walletMessage', 'Wallet disconnected', 'info');
-    }
-    
-    // ---- Withdraw Functionality ----
-    async function submitWithdrawal(e) {
-        e.preventDefault();
-        
-        if (!walletConnected) {
-            showMessage('withdrawMessage', 'Please connect your wallet first', 'error');
-            return;
-        }
-        
-        const amount = parseFloat(document.getElementById('withdrawAmount').value);
-        const recipientAddress = document.getElementById('recipientAddress').value;
-        const userEmail = document.getElementById('userEmail').value;
-        const notes = document.getElementById('additionalNotes').value;
-        
-        if (amount < WITHDRAW_MIN_SA) {
-            showMessage('withdrawMessage', `Minimum withdrawal amount is ${WITHDRAW_MIN_SA} SA`, 'error');
-            return;
-        }
-        
-        if (!ethers.utils.isAddress(recipientAddress)) {
-            showMessage('withdrawMessage', 'Please enter a valid wallet address', 'error');
-            return;
-        }
-        
-        // Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(userEmail)) {
-            showMessage('withdrawMessage', 'Please enter a valid email address', 'error');
-            return;
-        }
-        
-        try {
-            // Show confirmation
-            const confirmed = confirm(`Confirm withdrawal request for ${amount} SA to ${formatAddress(recipientAddress)}?\n\nA fee of ${WITHDRAW_FEE_BNB} BNB will be charged.`);
-            if (!confirmed) return;
-            
-            document.getElementById('submitWithdrawBtn').disabled = true;
-            document.getElementById('submitWithdrawBtn').innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Processing...';
-            
-            showMessage('withdrawMessage', 'Processing withdrawal request...', 'info');
-            
-            // Send transaction for fee payment
-            const tx = await signer.sendTransaction({
-                to: '0xYourBnbFeeReceiverAddressHere', // Replace with your BNB fee receiver address
-                value: ethers.utils.parseEther(WITHDRAW_FEE_BNB)
-            });
-            
-            showMessage('withdrawMessage', 'Transaction sent. Waiting for confirmation...', 'info');
-            
-            // Wait for transaction to be mined
-            await tx.wait();
-            
-            // Here you would typically send the withdrawal request to your backend
-            // For this example, we'll simulate it
-            
-            // Simulate sending email (in a real app, this would be a backend API call)
-            const withdrawalData = {
-                amount: amount,
-                recipientAddress: recipientAddress,
-                userEmail: userEmail,
-                notes: notes,
-                txHash: tx.hash,
-                status: 'pending',
-                date: new Date().toISOString()
-            };
-            
-            // Save to localStorage (simulating database storage)
-            let withdrawals = JSON.parse(localStorage.getItem('withdrawals') || '[]');
-            withdrawals.push(withdrawalData);
-            localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
-            
-            // Update transactions list
-            updateTransactionsList();
-            
-            // Reset form
-            document.getElementById('withdrawForm').reset();
-            if (currentAccount) {
-                document.getElementById('recipientAddress').value = currentAccount; // Keep wallet address
-            }
-            
-            showMessage('withdrawMessage', `Withdrawal request submitted successfully! You'll receive an email confirmation. Processing takes 2-5 working days.`, 'success');
-            
-            document.getElementById('submitWithdrawBtn').disabled = false;
-            document.getElementById('submitWithdrawBtn').innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Submit Withdrawal Request';
-            
-        } catch (error) {
-            console.error("Withdrawal error:", error);
-            showMessage('withdrawMessage', 'Withdrawal failed: ' + (error.message || 'Unknown error'), 'error');
-            document.getElementById('submitWithdrawBtn').disabled = false;
-            document.getElementById('submitWithdrawBtn').innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Submit Withdrawal Request';
-        }
-    }
-    
-    // ---- Transactions List ----
-    function updateTransactionsList() {
-        const transactionsList = document.getElementById('transactionsList');
-        transactionsList.innerHTML = '';
-        
-        const withdrawals = JSON.parse(localStorage.getItem('withdrawals') || [];
-        
-        if (withdrawals.length === 0) {
-            transactionsList.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">No transactions yet</div>';
-            return;
-        }
-        
-        withdrawals.forEach(tx => {
-            const txElement = document.createElement('div');
-            txElement.className = 'transaction';
-            
-            const date = new Date(tx.date);
-            const formattedDate = date.toLocaleDateString();
-            
-            let statusClass = 'status-pending';
-            if (tx.status === 'completed') statusClass = 'status-completed';
-            if (tx.status === 'failed') statusClass = 'status-failed';
-            
-            txElement.innerHTML = `
-                <div>
-                    <div class="transaction-amount">${tx.amount} SA</div>
-                    <div class="transaction-date">${formattedDate}</div>
-                </div>
-                <div class="transaction-status ${statusClass}">${tx.status.charAt(0).toUpperCase() + tx.status.slice(1)}</div>
-            `;
-            
-            transactionsList.appendChild(txElement);
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-    }
-    
-    // ---- Tab Switching ----
-    function setupTabs() {
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
         
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and contents
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                // Add active class to clicked tab and corresponding content
-                tab.classList.add('active');
-                const tabId = tab.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                // Refresh transactions list if that tab is selected
-                if (tabId === 'transactions') {
-                    updateTransactionsList();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-    }
-    
-    // ---- Theme Management ----
-    function setTheme(light) {
-        if(light) {
-            document.body.classList.add('light');
-            localStorage.setItem('theme','light');
-            document.getElementById('themeToggleIcon').textContent='🌞';
-            document.getElementById('themeToggleBtn').innerHTML = '<span>Dark Mode</span><span id="themeToggleIcon">🌙</span>';
-        } else {
-            document.body.classList.remove('light');
-            localStorage.setItem('theme','dark');
-            document.getElementById('themeToggleIcon').textContent='🌙';
-            document.getElementById('themeToggleBtn').innerHTML = '<span>Light Mode</span><span id="themeToggleIcon">🌞</span>';
-        }
-    }
-    
-    function toggleTheme() {
-        setTheme(!document.body.classList.contains('light'));
-    }
-    
-    // ---- Profile Dropdown ----
-    async function displayUser() {
-        try {
-            const user = await account.get();
-            const res = await databases.listDocuments(APPWRITE_DB_ID, APPWRITE_COLLECTION_ID, [Query.equal("userId", user.$id)]);
-            if (res.documents.length > 0) {
-                const profile = res.documents[0];
-                document.getElementById('dropdownUsername').innerHTML = `<span class="emoji-avatar">🧑</span> ${profile.name}`;
-                document.getElementById('dropdownEmail').innerHTML = `<span class="emoji-avatar">✉️</span> ${profile.email}`;
-            }
-        } catch (err) {
-            console.error("Error fetching user:", err);
-        }
-    }
-    
-    // ---- Event Listeners ----
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set up tabs
-        setupTabs();
-        
-        // Initialize transactions list
-        updateTransactionsList();
-        
-        // Connect wallet button
-        document.getElementById('connectWalletBtn').addEventListener('click', () => {
-            // Show wallet options modal
-            document.getElementById('walletOptions').style.display = 'flex';
-        });
-        
-        // Disconnect wallet button
-        document.getElementById('disconnectWalletBtn').addEventListener('click', disconnectWallet);
-        
-        // Wallet option buttons
-        document.getElementById('metamaskOption').addEventListener('click', () => connectWallet('injected'));
-        document.getElementById('trustWalletOption').addEventListener('click', () => connectWallet('injected'));
-        document.getElementById('binanceWalletOption').addEventListener('click', () => connectWallet('injected'));
-        document.getElementById('walletConnectOption').addEventListener('click', () => connectWallet('walletconnect'));
-        
-        // Close wallet options
-        document.getElementById('closeWalletOptions').addEventListener('click', () => {
-            document.getElementById('walletOptions').style.display = 'none';
-        });
-        
-        // Withdraw form submission
-        document.getElementById('withdrawForm').addEventListener('submit', submitWithdrawal);
-        
-        // Refresh transactions button
-        document.getElementById('refreshTransactionsBtn').addEventListener('click', updateTransactionsList);
-        
-        // Theme toggle
-        document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
-        
-        // Profile dropdown
-        document.getElementById('profileDropdownBtn').onclick = function(e) {
-            e.stopPropagation();
-            let menu = document.getElementById('profileDropdownMenu');
-            menu.style.display = (menu.style.display === "block") ? "none" : "block";
-        };
-        document.addEventListener('click', function() {
-            let menu = document.getElementById('profileDropdownMenu');
-            if (menu.style.display === "block") menu.style.display = "none";
-        });
-        document.getElementById('profileDropdownMenu').onclick = function(e) { e.stopPropagation(); };
-        
-        // Logout
-        document.getElementById('logoutBtn').onclick = async function(e) {
-            e.preventDefault();
-            try { 
-                await account.deleteSession('current'); 
-                window.location.href = "login.html";
-            } catch (err) {
-                console.error("Error logging out:", err);
-            }
-        };
-        
-        // On load, restore theme
-        if(localStorage.getItem('theme')==='light') {
-            setTheme(true);
-        } else {
-            setTheme(false);
-        }
-        
-        // Display user info if logged in
-        displayUser();
-        
-        // Check if wallet is already connected (e.g., page refresh)
-        if (window.ethereum && window.ethereum.selectedAddress) {
-            connectWallet('injected');
-        }
-    });
     </script>
 </body>
 </html>
