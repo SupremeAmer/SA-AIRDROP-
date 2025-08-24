@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grace Community Church - Documentation & Resources</title>
+    <title>NewsCast - Breaking News & Latest Updates</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2E4C6D;
-            --secondary: #DAA520;
-            --accent: #39603D;
-            --light: #F8F0E3;
+            --primary: #2E86DE;
+            --secondary: #FF6B6B;
             --dark: #333333;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --accent: #FF9F43;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
         
@@ -31,10 +32,9 @@
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Merriweather', serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary);
         }
         
         .container {
@@ -46,13 +46,47 @@
         
         /* Header Styles */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 0;
+            background-color: #fff;
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
+        }
+        
+        .header-top {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .date-display {
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .header-main {
+            padding: 15px 0;
         }
         
         .header-container {
@@ -62,13 +96,11 @@
         }
         
         .logo {
-            font-family: 'Merriweather', serif;
-            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
             font-weight: 700;
-            color: white;
+            color: var(--primary);
             text-decoration: none;
-            display: flex;
-            align-items: center;
         }
         
         .logo span {
@@ -86,113 +118,152 @@
         
         .nav-menu a {
             text-decoration: none;
-            color: white;
+            color: var(--dark);
             font-weight: 500;
             font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
             transition: var(--transition);
         }
         
         .nav-menu a:hover {
-            color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
         }
         
         .menu-toggle {
             display: none;
             font-size: 24px;
             cursor: pointer;
+        }
+        
+        /* Breaking News Ticker */
+        .breaking-news {
+            background-color: var(--secondary);
             color: white;
+            padding: 12px 0;
+        }
+        
+        .ticker-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .ticker-label {
+            background-color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 3px;
+            margin-right: 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            overflow: hidden;
+            position: relative;
+            flex-grow: 1;
+        }
+        
+        .ticker-content marquee {
+            font-size: 16px;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(46, 76, 109, 0.8), rgba(46, 76, 109, 0.8)), url('https://images.unsplash.com/photo-1518837683465-8f6c1c346cac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            padding: 40px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 100px 0;
-            text-align: center;
         }
         
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 700px;
         }
         
-        .hero h1 {
-            font-size: 3rem;
+        .hero-content h1 {
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            color: white;
+            line-height: 1.2;
         }
         
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: var(--dark);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid var(--secondary);
+        .hero-meta span {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
         }
         
-        .btn:hover {
-            background-color: transparent;
-            color: var(--secondary);
+        .hero-meta i {
+            margin-right: 8px;
         }
         
-        .btn-outline {
-            background-color: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px 0;
         }
         
-        .btn-outline:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-        
-        /* Sections */
-        section {
-            padding: 80px 0;
-        }
-        
+        /* Article Cards */
         .section-title {
-            text-align: center;
-            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+            margin-bottom: 0;
+            padding-right: 15px;
         }
         
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary);
+        .section-title a {
+            margin-left: auto;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
         }
         
-        /* Sermons Section */
-        .sermons-grid {
+        .section-title a i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .section-title a:hover i {
+            transform: translateX(5px);
+        }
+        
+        .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
-        .sermon-card {
+        .article-card {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
@@ -200,294 +271,208 @@
             transition: var(--transition);
         }
         
-        .sermon-card:hover {
-            transform: translateY(-10px);
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .sermon-image {
+        .article-image {
             height: 200px;
             overflow: hidden;
         }
         
-        .sermon-image img {
+        .article-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .sermon-card:hover .sermon-image img {
+        .article-card:hover .article-image img {
             transform: scale(1.05);
         }
         
-        .sermon-content {
-            padding: 25px;
+        .article-content {
+            padding: 20px;
         }
         
-        .sermon-date {
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .sermon-content h3 {
-            font-size: 1.4rem;
+        .article-content h3 {
+            font-size: 1.3rem;
             margin-bottom: 15px;
             line-height: 1.4;
         }
         
-        .sermon-meta {
+        .article-meta {
             display: flex;
             align-items: center;
-            color: var(--dark);
+            color: var(--gray);
             font-size: 14px;
             margin-bottom: 15px;
         }
         
-        .sermon-meta span {
+        .article-meta span {
             display: flex;
             align-items: center;
             margin-right: 15px;
         }
         
-        .sermon-meta i {
+        .article-meta i {
             margin-right: 5px;
+        }
+        
+        .article-excerpt {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .read-more {
+            display: inline-block;
             color: var(--primary);
-        }
-        
-        .sermon-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .sermon-btn {
-            flex: 1;
-            text-align: center;
-            padding: 8px 0;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: var(--transition);
-        }
-        
-        .sermon-btn:hover {
-            background-color: var(--secondary);
-            color: var(--dark);
-        }
-        
-        /* Events Section */
-        .events {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .events .section-title h2 {
-            color: white;
-        }
-        
-        .events-timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .events-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background-color: var(--secondary);
-        }
-        
-        .event-item {
-            width: 50%;
-            padding: 20px;
-            position: relative;
-            box-sizing: border-box;
-        }
-        
-        .event-item:nth-child(odd) {
-            left: 0;
-            padding-right: 40px;
-        }
-        
-        .event-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
-        }
-        
-        .event-content {
-            background-color: white;
-            color: var(--dark);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-        
-        .event-content::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 20px;
-            height: 20px;
-            background-color: var(--secondary);
-            border-radius: 50%;
-        }
-        
-        .event-item:nth-child(odd) .event-content::after {
-            right: -10px;
-            transform: translateX(50%);
-        }
-        
-        .event-item:nth-child(even) .event-content::after {
-            left: -10px;
-            transform: translateX(-50%);
-        }
-        
-        .event-date {
-            color: var(--secondary);
             font-weight: 600;
-            margin-bottom: 10px;
+            text-decoration: none;
+            font-size: 14px;
         }
         
-        .event-content h3 {
-            margin-bottom: 15px;
-        }
-        
-        /* Resources Section */
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        
-        .resource-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
+        .read-more i {
+            margin-left: 5px;
             transition: var(--transition);
         }
         
-        .resource-card:hover {
-            transform: translateY(-5px);
+        .read-more:hover i {
+            transform: translateX(5px);
         }
         
-        .resource-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .resource-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-        
-        .resource-card p {
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        /* Leadership Section */
-        .leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .leader-card {
+        /* Sidebar Styles */
+        .sidebar-widget {
             background-color: white;
             border-radius: 8px;
-            overflow: hidden;
+            padding: 25px;
+            margin-bottom: 30px;
             box-shadow: var(--shadow);
-            text-align: center;
         }
         
-        .leader-image {
-            height: 250px;
+        .sidebar-widget h3 {
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .category-list a:hover {
+            color: var(--primary);
+        }
+        
+        .trending-news {
+            list-style: none;
+        }
+        
+        .trending-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .trending-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .trending-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
             overflow: hidden;
+            margin-right: 15px;
         }
         
-        .leader-image img {
+        .trending-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .leader-info {
-            padding: 25px;
-        }
-        
-        .leader-name {
-            font-size: 1.4rem;
+        .trending-content h4 {
+            font-size: 1rem;
             margin-bottom: 5px;
         }
         
-        .leader-role {
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 15px;
+        .trending-content span {
+            color: var(--gray);
+            font-size: 14px;
         }
         
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 30px;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
+        /* Newsletter Section */
+        .newsletter {
             background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
             color: white;
-            font-size: 20px;
+            padding: 60px 0;
+            text-align: center;
         }
         
-        .contact-text h4 {
-            margin-bottom: 5px;
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 20px;
         }
         
-        .map-container {
-            height: 300px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
         
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 15px;
             border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--secondary);
         }
         
         /* Footer */
         footer {
-            background-color: var(--primary);
+            background-color: var(--dark);
             color: white;
             padding: 60px 0 30px;
         }
@@ -524,19 +509,21 @@
         }
         
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--accent);
         }
         
-        .service-times {
+        .footer-contact {
             list-style: none;
         }
         
-        .service-times li {
-            margin-bottom: 12px;
+        .footer-contact li {
             display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 15px;
+            color: var(--accent);
         }
         
         .copyright {
@@ -549,24 +536,12 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            .events-timeline::before {
-                left: 30px;
+            .main-content {
+                grid-template-columns: 1fr;
             }
             
-            .event-item {
-                width: 100%;
-                padding: 20px 0 20px 60px;
-                left: 0;
-            }
-            
-            .event-item:nth-child(even) {
-                left: 0;
-                padding-left: 60px;
-            }
-            
-            .event-content::after {
-                left: -30px !important;
-                transform: translateX(-50%) !important;
+            .hero-content h1 {
+                font-size: 2.3rem;
             }
         }
         
@@ -577,12 +552,12 @@
             
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: 130px;
                 left: -100%;
                 flex-direction: column;
-                background-color: var(--primary);
+                background-color: white;
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: calc(100vh - 130px);
                 padding: 40px;
                 transition: var(--transition);
                 box-shadow: var(--shadow);
@@ -596,326 +571,291 @@
                 margin: 15px 0;
             }
             
-            .hero h1 {
-                font-size: 2.3rem;
+            .header-top-container {
+                flex-direction: column;
+                gap: 10px;
             }
             
-            .hero p {
-                font-size: 1rem;
+            .ticker-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .ticker-label {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header Section -->
     <header>
-        <div class="container header-container">
-            <a href="#" class="logo">Grace<span>Community</span></a>
-            
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+        <div class="header-top">
+            <div class="container header-top-container">
+                <div class="date-display">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="current-date">Monday, June 12, 2023</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
-            
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#sermons">Sermons</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#leadership">Leadership</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        </div>
+        
+        <div class="header-main">
+            <div class="container header-container">
+                <a href="#" class="logo">News<span>Cast</span></a>
+                
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Health</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">Sports</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="breaking-news">
+            <div class="container ticker-container">
+                <div class="ticker-label">Breaking News</div>
+                <div class="ticker-content">
+                    <marquee behavior="scroll" direction="left">
+                        Global summit on climate change concludes with new agreements • Tech giant announces breakthrough in quantum computing • National team advances to finals after thrilling victory • Stock market reaches all-time high
+                    </marquee>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container hero-content">
-            <h1>Welcome to Grace Community Church</h1>
-            <p>Growing in faith, serving with love, and sharing the hope of Christ with our community.</p>
-            <div class="hero-buttons">
-                <a href="#sermons" class="btn">Listen to Sermons</a>
-                <a href="#events" class="btn btn-outline">Upcoming Events</a>
+            <div class="category-tag">WORLD NEWS</div>
+            <h1>Global Leaders Meet to Address Climate Change Crisis</h1>
+            <div class="hero-meta">
+                <span><i class="fas fa-user"></i> John Davidson</span>
+                <span><i class="fas fa-clock"></i> 2 hours ago</span>
+                <span><i class="fas fa-comments"></i> 243 comments</span>
             </div>
+            <p>World leaders gather for emergency climate summit as new report shows accelerating ice melt and rising sea levels. Historic agreements expected to be signed.</p>
+            <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <!-- Sermons Section -->
-    <section id="sermons" class="sermons">
-        <div class="container">
+    <!-- Main Content -->
+    <div class="container main-content">
+        <main>
             <div class="section-title">
-                <h2>Recent Sermons</h2>
+                <h2>Top Stories</h2>
+                <a href="#">View All <i class="fas fa-arrow-right"></i></a>
             </div>
             
-            <div class="sermons-grid">
-                <div class="sermon-card">
-                    <div class="sermon-image">
-                        <img src="https://images.unsplash.com/photo-1508963493747-53f7195824e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tech News">
                     </div>
-                    <div class="sermon-content">
-                        <span class="sermon-date">June 12, 2023</span>
-                        <h3>The Power of Faith in Difficult Times</h3>
-                        <div class="sermon-meta">
-                            <span><i class="fas fa-user"></i> Pastor John Smith</span>
-                            <span><i class="fas fa-clock"></i> 45 min</span>
+                    <div class="article-content">
+                        <h3>New AI Technology Predicts Disease Outbreaks</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> Sarah Williams</span>
+                            <span><i class="fas fa-clock"></i> 5 hours ago</span>
                         </div>
-                        <p>Exploring how faith can sustain us through life's most challenging moments.</p>
-                        <div class="sermon-actions">
-                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
-                        </div>
+                        <p class="article-excerpt">Researchers develop artificial intelligence system that can predict disease outbreaks with 90% accuracy.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
+                </article>
                 
-                <div class="sermon-card">
-                    <div class="sermon-image">
-                        <img src="https://images.unsplash.com/photo-1423592707957-3b212afa6733?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Economy">
                     </div>
-                    <div class="sermon-content">
-                        <span class="sermon-date">June 5, 2023</span>
-                        <h3>Building a Community of Love</h3>
-                        <div class="sermon-meta">
-                            <span><i class="fas fa-user"></i> Pastor Sarah Johnson</span>
-                            <span><i class="fas fa-clock"></i> 38 min</span>
+                    <div class="article-content">
+                        <h3>Economy Shows Strong Recovery Signs</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> Michael Chen</span>
+                            <span><i class="fas fa-clock"></i> 7 hours ago</span>
                         </div>
-                        <p>How we can create a welcoming and loving church community that reflects Christ's love.</p>
-                        <div class="sermon-actions">
-                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
-                        </div>
+                        <p class="article-excerpt">Latest economic indicators suggest strong recovery with unemployment at pre-pandemic levels.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
+                </article>
                 
-                <div class="sermon-card">
-                    <div class="sermon-image">
-                        <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sermon Image">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sports">
                     </div>
-                    <div class="sermon-content">
-                        <span class="sermon-date">May 29, 2023</span>
-                        <h3>Finding Purpose in God's Plan</h3>
-                        <div class="sermon-meta">
-                            <span><i class="fas fa-user"></i> Pastor Michael Brown</span>
-                            <span><i class="fas fa-clock"></i> 42 min</span>
+                    <div class="article-content">
+                        <h3>National Team Advances to Finals</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> David Johnson</span>
+                            <span><i class="fas fa-clock"></i> 9 hours ago</span>
                         </div>
-                        <p>Discovering how to align our lives with God's purpose for us.</p>
-                        <div class="sermon-actions">
-                            <a href="#" class="sermon-btn"><i class="fas fa-play-circle"></i> Listen</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-download"></i> Download</a>
-                            <a href="#" class="sermon-btn"><i class="fas fa-file-alt"></i> Notes</a>
+                        <p class="article-excerpt">After a thrilling semi-final match, the national team secures spot in championship finals.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Health">
+                    </div>
+                    <div class="article-content">
+                        <h3>Breakthrough in Cancer Research</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> Emily Roberts</span>
+                            <span><i class="fas fa-clock"></i> 12 hours ago</span>
                         </div>
+                        <p class="article-excerpt">Scientists announce promising new treatment approach that could significantly improve cancer survival rates.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="section-title">
+                <h2>Technology</h2>
+                <a href="#">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tech">
+                    </div>
+                    <div class="article-content">
+                        <h3>New Smartphone Features Revolutionary Camera</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> Tech Insider</span>
+                            <span><i class="fas fa-clock"></i> 1 day ago</span>
+                        </div>
+                        <p class="article-excerpt">Latest flagship smartphone boasts camera technology that outperforms professional equipment.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="AI">
+                    </div>
+                    <div class="article-content">
+                        <h3>Ethical Concerns Raised Over AI Development</h3>
+                        <div class="article-meta">
+                            <span><i class="fas fa-user"></i> AI Today</span>
+                            <span><i class="fas fa-clock"></i> 1 day ago</span>
+                        </div>
+                        <p class="article-excerpt">Experts call for regulations as artificial intelligence systems become more advanced and autonomous.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </main>
+        
+        <aside>
+            <div class="sidebar-widget">
+                <h3>Categories</h3>
+                <ul class="category-list">
+                    <li><a href="#">Politics <span>(24)</span></a></li>
+                    <li><a href="#">Business <span>(18)</span></a></li>
+                    <li><a href="#">Technology <span>(32)</span></a></li>
+                    <li><a href="#">Health <span>(15)</span></a></li>
+                    <li><a href="#">Entertainment <span>(27)</span></a></li>
+                    <li><a href="#">Sports <span>(21)</span></a></li>
+                    <li><a href="#">Science <span>(13)</span></a></li>
+                    <li><a href="#">World <span>(29)</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Trending News</h3>
+                <ul class="trending-news">
+                    <li class="trending-item">
+                        <div class="trending-image">
+                            <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trending">
+                        </div>
+                        <div class="trending-content">
+                            <h4>Market Reaches All-Time High</h4>
+                            <span><i class="fas fa-clock"></i> 3 hours ago</span>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trending">
+                        </div>
+                        <div class="trending-content">
+                            <h4>New Education Policy Announced</h4>
+                            <span><i class="fas fa-clock"></i> 6 hours ago</span>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-image">
+                            <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trending">
+                        </div>
+                        <div class="trending-content">
+                            <h4>Film Festival Winners Announced</h4>
+                            <span><i class="fas fa-clock"></i> 10 hours ago</span>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-image">
+                            <img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trending">
+                        </div>
+                        <div class="trending-content">
+                            <h4>Aviation Industry Sees Recovery</h4>
+                            <span><i class="fas fa-clock"></i> 1 day ago</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Live Broadcast</h3>
+                <div class="video-container">
+                    <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Live Broadcast" style="width: 100%; border-radius: 8px;">
+                    <div style="text-align: center; margin-top: 15px;">
+                        <button style="background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 600; cursor: pointer;">
+                            <i class="fas fa-play-circle"></i> Watch Live
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </aside>
+    </div>
 
-    <!-- Events Section -->
-    <section id="events" class="events">
+    <!-- Newsletter Section -->
+    <section class="newsletter">
         <div class="container">
-            <div class="section-title">
-                <h2>Upcoming Events</h2>
-            </div>
-            
-            <div class="events-timeline">
-                <div class="event-item">
-                    <div class="event-content">
-                        <span class="event-date">June 18, 2023 | 10:00 AM</span>
-                        <h3>Sunday Worship Service</h3>
-                        <p>Join us for our weekly worship service with communion. Special music by the choir.</p>
-                        <a href="#" class="btn">More Info</a>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-content">
-                        <span class="event-date">June 20, 2023 | 6:30 PM</span>
-                        <h3>Youth Group Meeting</h3>
-                        <p>All youth ages 13-18 are invited for fellowship, games, and Bible study.</p>
-                        <a href="#" class="btn">More Info</a>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-content">
-                        <span class="event-date">June 25, 2023 | 12:00 PM</span>
-                        <h3>Church Picnic</h3>
-                        <p>Annual church picnic at Riverside Park. Food, games, and fellowship for all ages.</p>
-                        <a href="#" class="btn">More Info</a>
-                    </div>
-                </div>
-                
-                <div class="event-item">
-                    <div class="event-content">
-                        <span class="event-date">July 5-7, 2023</span>
-                        <h3>Summer Bible Conference</h3>
-                        <p>Three days of teaching, worship, and fellowship with guest speaker Dr. James Williams.</p>
-                        <a href="#" class="btn">More Info</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="resources">
-        <div class="container">
-            <div class="section-title">
-                <h2>Church Resources</h2>
-            </div>
-            
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Bible Study Guides</h3>
-                    <p>Download our weekly Bible study guides for personal or group study.</p>
-                    <a href="#" class="btn">View Resources</a>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>Sermon Archive</h3>
-                    <p>Access our complete library of sermons from the past several years.</p>
-                    <a href="#" class="btn">Browse Archive</a>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Church Calendar</h3>
-                    <p>Stay up-to-date with all church events and activities.</p>
-                    <a href="#" class="btn">View Calendar</a>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h3>Ministry Opportunities</h3>
-                    <p>Find ways to get involved and serve in our church community.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="leadership" class="leadership">
-        <div class="container">
-            <div class="section-title">
-                <h2>Church Leadership</h2>
-            </div>
-            
-            <div class="leadership-grid">
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pastor John Smith">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">John Smith</h3>
-                        <p class="leader-role">Senior Pastor</p>
-                        <p>Leading Grace Community since 2010 with a passion for teaching God's Word.</p>
-                    </div>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pastor Sarah Johnson">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Sarah Johnson</h3>
-                        <p class="leader-role">Associate Pastor</p>
-                        <p>Oversees community outreach and discipleship programs.</p>
-                    </div>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Michael Brown">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Michael Brown</h3>
-                        <p class="leader-role">Youth Pastor</p>
-                        <p>Leads our youth ministry with energy and creativity.</p>
-                    </div>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Rebecca Davis">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Rebecca Davis</h3>
-                        <p class="leader-role">Worship Director</p>
-                        <p>Leads our worship ministry and choir programs.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Location</h4>
-                            <p>123 Church Street, Communityville, CV 12345</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p>info@gracecommunitychurch.org</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Office Hours</h4>
-                            <p>Monday-Thursday: 9am - 4pm</p>
-                            <p>Friday: 9am - 12pm</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425872426637!3d40.740769871389115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c8eef01%3A0x41c6c2a58c5d5b15!2s123%20Church%20St%2C%20New%20York%2C%20NY%2010006%2C%20USA!5e0!3m2!1sen!2s!4v1686592332345!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with the latest news and exclusive content delivered straight to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
         </div>
     </section>
 
@@ -924,35 +864,8 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
-                    <h4>Grace Community Church</h4>
-                    <p>Growing in faith, serving with love, and sharing the hope of Christ with our community.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#sermons">Sermons</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#resources">Resources</a></li>
-                        <li><a href="#leadership">Leadership</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Service Times</h4>
-                    <ul class="service-times">
-                        <li>Sunday Worship <span>10:00 AM</span></li>
-                        <li>Sunday School <span>9:00 AM</span></li>
-                        <li>Youth Group <span>Wed 6:30 PM</span></li>
-                        <li>Prayer Meeting <span>Thu 7:00 PM</span></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Connect With Us</h4>
-                    <p>Follow us on social media for updates and inspiration.</p>
+                    <h4>About NewsCast</h4>
+                    <p>NewsCast delivers breaking news, latest updates, and in-depth reporting from around the world.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -960,15 +873,53 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Politics</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Health</a></li>
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Sports</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 News Street, New York, NY 10001</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@newscast.com</li>
+                    </ul>
+                </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Grace Community Church. All Rights Reserved.</p>
+                <p>&copy; 2023 NewsCast. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Set current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+        
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
@@ -981,24 +932,6 @@
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
             });
         });
     </script>
